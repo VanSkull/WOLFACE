@@ -15,14 +15,18 @@ html{
 /**********/
 /* Règles */
 /**********/
-.body{
+font-face{
+    font-family: "Arial";
+}
+
+body{
     background-image: url(../images/Fond/connexion.jpg);
+    background-size: 100%;
 }
 
 .page_connexion{
     display: flex;
     align-items: center;
-    margin-top: -115px;
     margin-left: 100px;
     margin-right: 100px;
 }
@@ -30,7 +34,7 @@ html{
 .connexion{
     color: #B2ADD6;
     font-size: 20px;
-    padding: 100px;
+    padding: 50px;
     margin-top: 50px;
     padding-bottom: 100px;
 }
@@ -39,12 +43,22 @@ html{
     margin-bottom: 10px;
 }
 
+.connexion input[type=text]{
+    width: 400px;
+}
+
 .connexion a{
     text-decoration: underline;
     text-decoration-color: #B2ADD6;
     color: #B2ADD6;
     font-size: 15px;
 }
+
+.connexion input[type=submit]{
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
 .inscription{
     color: #B2ADD6;
     margin-left: 300px;
