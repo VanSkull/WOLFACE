@@ -36,7 +36,7 @@
                     <h1>CONNEXION</h1> 
                     <input type="text" name="login" id="email" value="" placeholder="email"/> <br/>
                     <input type="text" name="password" id="mdp" value="" placeholder="mot de passe"/> <br/>
-                    <a href="#">Mot de passe oublié ?</a>
+                    <a href="#">Mot de passe oublié ?</a><br/>
                     <input type="submit" name="connexion" value="Connexion"/>
                 </form>
             </div>
