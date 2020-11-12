@@ -7,17 +7,26 @@ if(isset($_POST) && count($_POST)!=0){
     print_r($_POST);
     echo "</pre>";
     
-    if(!isset($_POST["login"])){
+    //Vérification du nom et prénom
+    if(!isset($_POST["nom"]) || !isset($_POST["prenom"])){
         $checkForm = false;
         $error = $error . " Données invalides (identifiant).";
     }
     
-    if(!isset($_POST["email"]) || !isset($_POST["emailVerif"]) || filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)==false || filter_var($_POST["emailVerif"], FILTER_VALIDATE_EMAIL)==false || $_POST["email"]!=$_POST["emailVerif"]){
+    //Vérification du e-mail
+    if(!isset($_POST["email"]) || filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)==false){
         $checkForm = false;
         $error = $error . " Données invalides (e-mail).";
     }
     
-    if(!isset($_POST["mdp"]) || !isset($_POST["mdpVerif"]) || $_POST["mdp"]!=$_POST["mdpVerif"]){
+    //Vérification du mot de passe
+    if(!isset($_POST["mdp"]) || !isset($_POST["mdpconf"]) || $_POST["mdp"]!=$_POST["mdpconf"]){
+        $checkForm = false;
+        $error = $error . " Données invalides (mots de passe).";
+    }
+    
+    //Vérification de la date de naissance
+    if(!isset($_POST["mdp"]) || !isset($_POST["mdpconf"]) || $_POST["mdp"]!=$_POST["mdpconf"]){
         $checkForm = false;
         $error = $error . " Données invalides (mots de passe).";
     }
@@ -27,7 +36,7 @@ if(isset($_POST) && count($_POST)!=0){
         $mdp = $_POST["mdp"];
         $email = $_POST["email"];
         
-        $sql = "INSERT INTO user(login, mdp, email) VALUES(:login, PASSWORD(:mdp), :email)";
+        $sql = "INSERT INTO users(login, mdp, email) VALUES(:login, PASSWORD(:mdp), :email)";
 
         // Etape 1  : preparation
         $q = $pdo->prepare($sql);
