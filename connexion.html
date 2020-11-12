@@ -14,33 +14,43 @@
     </head>
     
     <body>
-        <form method="" action="">
+        
+        <div class="page_connexion">
             
-            <h1>CONNEXION</h1> 
-            <input type="text" name="email" id="email" value="" placeholder="email"/> <br/>
-            <input type="text" name="mdp" id="mdp" value="" placeholder="mot de passe"/>
-            <p>Mot de passe oublé ?</p>
-            <input type="submit" name="connexion" value="Connexion"/>
-    
-        </form>
+            <div class="connexion">
+                <form method="" action="">
+            
+                    <h1>CONNEXION</h1> 
+                    <input type="text" name="email" id="email" value="" placeholder="email"/> <br/>
+                    <input type="text" name="mdp" id="mdp" value="" placeholder="mot de passe"/> <br/>
+                    <a href="#">Mot de passe oublié ?</a>
+                    <input type="submit" name="connexion" value="Connexion"/>
+                </form>
+            </div>
         
-        <form method="" action="">
+            <div class="inscription">
+                <form method="" action="">
         
-            <h1>INSCRIPTION</h1>
-            <input type="text" name="nom" id="nom" value="" placeholder="NOM"/>
-            <input type="text" name="prenom" id="prenom" value="" placeholder="PRENOM"/> <br/>
-            <input type="text" name="email" id="email" value="" placeholder="email"/><br/>
-            <input type="text" name="mdp" id="mdp" value="" placeholder="mot de passe"/><br/>
-            <input type="text" name="mdpconf" id="mdpconf" value="" placeholder="Confirmation mot de passe"/> <br/>
-            <label for="birth">Date de naissance</label>
-            <input type="date" name="birth" id="birth" value="Date de naissance :"/> <br/>
-            <label for="sexe">Sexe :</label>
-            <input type="radio" id="masculin" name="sexe" value="Masculin" checked>
-            <label for="maculin">Masculin</label>
-            <input type="radio" id="feminin" name="sexe" value="Féminin">
-            <label for="feminin">Féminin</label>
-            <input type="radio" id="autre" name="sexe" value="Autre">
-            <label for="autre">Autre</label>
-        </form>
+                    <h1>INSCRIPTION</h1>
+                    <input type="text" name="nom" id="nom" value="" placeholder="NOM"/>
+                    <input type="text" name="prenom" id="prenom" value="" placeholder="PRENOM"/> <br/>
+                    <input type="text" name="email" id="email" value="" placeholder="email"/><br/>
+                    <input type="text" name="mdp" id="mdp" value="" placeholder="mot de passe"/><br/>
+                    <input type="text" name="mdpconf" id="mdpconf" value="" placeholder="Confirmation mot de passe"/> <br/>
+                    <label for="birth">Date de naissance</label>
+                    <input type="date" name="birth" id="birth" value="Date de naissance :"/> <br/>
+                    <label for="sexe">Sexe :</label>
+                    <input type="radio" id="masculin" name="sexe" value="Masculin" checked>
+                    <label for="maculin">Masculin</label>
+                    <input type="radio" id="feminin" name="sexe" value="Féminin">
+                    <label for="feminin">Féminin</label>
+                    <input type="radio" id="autre" name="sexe" value="Autre">
+                    <label for="autre">Autre</label>
+                    <input type="submit" name="connexion" value="Connexion"/>
+                </form>
+            </div>
+            
+        </div>
+        
     </body>
 </html>
