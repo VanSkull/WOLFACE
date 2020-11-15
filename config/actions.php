@@ -3,17 +3,21 @@
 
 $listeDesActions = array(
     "accueil" => "vues/accueil.php",
-    "login" => "vues/login.php",
-    "logup" => "vues/logup.php",
-    "connexion" => "traitement/connexion.php",
-    "deconnexion" => "traitement/deconnexion.php",
-    "create" => "traitement/createAccount.php",
-    "addLike" => "traitement/addLike.php",
-    "delLike" => "traitement/deleteLike.php",
-    "addPost" => "traitement/addPost.php",
-    "modPost" => "traitement/modifyPost.php",
-    "delPost" => "traitement/deletePost.php",  
-    "addComment" => "traitement/addComment.php",
-    "modComment" => "traitement/modifyComment.php",
-    "delComment" => "traitement/deleteComment.php"  
+    "amis" => "vues/amis.php",
+    "connexion_inscription" => "vues/connexion.php",
+    "profil" => "vues/profil.php",
+    
+    "ajoutCommentaire" => "traitement/addComment.php",
+    "modifCommentaire" => "traitement/modifyComment.php",
+    "supprCommentaire" => "traitement/deleteComment.php",
+    "ajoutPost" => "traitement/addPost.php",
+    "modifPost" => "traitement/modifyPost.php",
+    "supprPost" => "traitement/deletePost.php",
+    "ajoutLike" => "traitement/addLike.php",
+    "supprLike" => "traitement/deleteLike.php",
+    "login" => "traitement/connexion.php",
+    "logout" => "traitement/deconnexion.php",
+    "inscription" => "traitement/createAccount.php"
 );
+
+?>
