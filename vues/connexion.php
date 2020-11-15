@@ -14,7 +14,7 @@
 
 <div class="page_connexion">
     <div class="connexion">
-        <form method="post" action="#">
+        <form method="post" action="index.php?action=login">
             <h1>CONNEXION</h1> 
             <input type="text" name="login" id="email" value="" placeholder="email"/> <br/>
             <input type="text" name="password" id="mdp" value="" placeholder="mot de passe"/> <br/>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="inscription">
-        <form method="post" action="#">
+        <form method="post" action="index.php?action=login">
             <h1>INSCRIPTION</h1>
             <input type="text" name="nom" id="nom" value="" placeholder="NOM"/>
             <input type="text" name="prenom" id="prenom" value="" placeholder="PRENOM"/> <br/>
