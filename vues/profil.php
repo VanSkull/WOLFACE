@@ -7,7 +7,7 @@
     
     <nav id="menu-liens">
         <a href="index.php?action=accueil">Accueil</a>
-        <a href="index.php?action=notification">Notifications</a>
+        <a href="index.php?action=amis">Notifications</a>
         <a href="index.php?action=profil">Mon profil</a>
     </nav>
     

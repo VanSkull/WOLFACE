@@ -7,7 +7,7 @@
     
     <nav id="menu-liens">
         <a href="index.php?action=accueil">Accueil</a>
-        <a href="index.php?action=notification">Notifications</a>
+        <a href="index.php?action=amis">Notifications</a>
         <a href="index.php?action=profil">Mon profil</a>
     </nav>
     
@@ -24,7 +24,7 @@
 
 <div id="main-contain">
     <div class="contain contain-amis">
-        
+        <!-- Mettre le code ici -->        
     </div>
     <div id="copyright">
         <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
