@@ -1,3 +1,8 @@
+<?php
+    //echo "Page des amis.";
+
+?>
+
 <!--PAGE D'AMIS-->
 <div id="sidebar-menu">
     <div id="profil">

@@ -1,3 +1,8 @@
+<?php
+    //echo "Page d'accueil.";
+
+?>
+
 <!--PAGE D'ACCUEIL-->
 <div id="sidebar-menu">
     <div id="profil">
