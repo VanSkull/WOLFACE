@@ -1,17 +1,18 @@
 <?php
-    if(isset($_POST) && count($_POST)!=0){
+    /*if(isset($_POST) && count($_POST)!=0){
         echo "<pre>";
         print_r($_POST);
         echo "</pre>";
         
-        /*if(checkdate(31, 12, 2000)){
+        if(checkdate(31, 12, 2000)){
             echo "Date bien écrite";
         }else{
             echo "Erreur! Date invalide!";
-        }*/
-    }
+        }
+    }*/
 ?>
-<body>
+
+<!-- <body> -->
     <div class="page_connexion">
         <div class="connexion">
             <form method="post" action="index.php?action=login">
@@ -26,7 +27,7 @@
         <div class="logo">
             <img src="../images/logo.png" alt="logo">
         </div>
-
+      
         <div class="inscription">
             <form method="post" action="index.php?action=login">
                 <h1>INSCRIPTION</h1>
@@ -56,4 +57,4 @@
             </form>
         </div>
     </div>
-</body>
+<!-- </body> -->

@@ -3,6 +3,7 @@
 
 ?>
 
+<!-- <body> -->
 <!--PAGE D'AMIS-->
 <div id="sidebar-menu">
     <div id="profil">
@@ -39,3 +40,4 @@
         </p>
     </div>
 </div>
+<!-- </body> -->

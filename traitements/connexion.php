@@ -1,4 +1,8 @@
 <?php
+if(!(isset($_POST)) || !(isset($_POST["login"])) || !(isset($_POST["password"]))){
+    message("Erreur! Arrivée soudaine. Redirection formulaire de connexion.");
+    header('Location: index.php?action=connexion_inscription');
+}
 
 $sql = "SELECT * FROM users WHERE email=? AND password=PASSWORD(?)";
 
@@ -18,7 +22,7 @@ echo "</pre>";
 
 if(!$line){
     // Si $line est faux le couple login mdp est mauvais, on retourne au formulaire
-    header("Location: index.php?action=login");
+    header("Location: index.php?action=connexion_inscription");
 }else{
     // sinon on crée les variables de session $_SESSION['id'] et $_SESSION['login'] et on va à la page d'accueil
     $_SESSION["id"] = $line["id"];
