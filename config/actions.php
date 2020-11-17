@@ -7,17 +7,17 @@ $listeDesActions = array(
     "connexion_inscription" => "vues/connexion.php",
     "profil" => "vues/profil.php",
     
-    "ajoutCommentaire" => "traitement/addComment.php",
-    "modifCommentaire" => "traitement/modifyComment.php",
-    "supprCommentaire" => "traitement/deleteComment.php",
-    "ajoutPost" => "traitement/addPost.php",
-    "modifPost" => "traitement/modifyPost.php",
-    "supprPost" => "traitement/deletePost.php",
-    "ajoutLike" => "traitement/addLike.php",
-    "supprLike" => "traitement/deleteLike.php",
-    "login" => "traitement/connexion.php",
-    "logout" => "traitement/deconnexion.php",
-    "inscription" => "traitement/createAccount.php"
+    "ajoutCommentaire" => "traitements/addComment.php",
+    "modifCommentaire" => "traitements/modifyComment.php",
+    "supprCommentaire" => "traitements/deleteComment.php",
+    "ajoutPost" => "traitements/addPost.php",
+    "modifPost" => "traitements/modifyPost.php",
+    "supprPost" => "traitements/deletePost.php",
+    "ajoutLike" => "traitements/addLike.php",
+    "supprLike" => "traitements/deleteLike.php",
+    "login" => "traitements/connexion.php",
+    "logout" => "traitements/deconnexion.php",
+    "inscription" => "traitements/createAccount.php"
 );
 
 ?>

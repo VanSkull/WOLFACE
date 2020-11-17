@@ -7,6 +7,20 @@ include("config/actions.php");
 session_start();
 ob_start(); // Je démarre le buffer de sortie : les données à afficher sont stockées
 
+    echo 'Tableau $_POST :';
+     echo "<pre>";
+     var_dump($_POST);
+     echo "</pre>";
+    echo "<br/>";
+    echo 'Tableau $_SESSION :';
+     echo "<pre>";
+     var_dump($_SESSION);
+     echo "</pre>";
+
+if(!(isset($_SESSION)) || count($_SESSION) == 0){
+    message("Création de la session");
+    header('Location: index.php?action=connexion_inscription');
+}
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +39,7 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
         <link href="css/normalize.css" rel="stylesheet" type="text/css" />
         <link href="css/style.css" rel="stylesheet" type="text/css" />
         
-        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery-3.5.1.min.js"></script>
     </head>
     
     <body>

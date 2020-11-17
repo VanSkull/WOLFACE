@@ -3,6 +3,7 @@
 
 ?>
 
+<!-- <body> -->
 <!--PAGE DE PROFIL UTILISATEUR-->
 <div id="sidebar-menu">
     <div id="profil">
@@ -135,3 +136,4 @@
         </p>
     </div>
 </div>
+<!-- </body> -->
