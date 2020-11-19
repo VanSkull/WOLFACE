@@ -7,7 +7,7 @@ include("config/actions.php");
 session_start();
 ob_start(); // Je démarre le buffer de sortie : les données à afficher sont stockées
 
-    /*echo 'Tableau $_POST :';
+    echo 'Tableau $_POST :';
      echo "<pre>";
      var_dump($_POST);
      echo "</pre>";
@@ -15,7 +15,7 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
     echo 'Tableau $_SESSION :';
      echo "<pre>";
      var_dump($_SESSION);
-     echo "</pre>";*/
+     echo "</pre>";
 
 if(!(isset($_SESSION)) || count($_SESSION) == 0){
     message("Création de la session");

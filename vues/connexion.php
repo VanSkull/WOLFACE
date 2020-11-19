@@ -29,7 +29,7 @@
         </div>
       
         <div class="inscription">
-            <form method="post" action="index.php?action=login">
+            <form method="post" action="index.php?action=inscription">
                 <h1>INSCRIPTION</h1>
                 <input type="text" name="nom" id="nom" value="" placeholder="NOM"/>
                 <input type="text" name="prenom" id="prenom" value="" placeholder="PRENOM"/> <br/>

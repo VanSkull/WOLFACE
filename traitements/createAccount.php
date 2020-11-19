@@ -26,15 +26,16 @@ if(isset($_POST) && count($_POST)!=0){
     }
     
     //Vérification de la date de naissance
-    if(!isset($_POST["mdp"]) || !isset($_POST["mdpconf"]) || $_POST["mdp"]!=$_POST["mdpconf"]){
+    if(!isset($_POST["birth"]) /*|| strptime($_POST["birth"], "%Y-%m-%d")==false*/){
         $checkForm = false;
-        $error = $error . " Données invalides (mots de passe).";
+        $error = $error . " Données invalides (Date de naissance).";
     }
     
     if($checkForm == true){
-        $login = $_POST["login"];
-        $mdp = $_POST["mdp"];
+        $family_name = $_POST["nom"];
+        $user_name = $_POST["prenom"];
         $email = $_POST["email"];
+        $mdp = $_POST["mdp"];
         
         $sql = "INSERT INTO users(login, mdp, email) VALUES(:login, PASSWORD(:mdp), :email)";
 
@@ -49,16 +50,16 @@ if(isset($_POST) && count($_POST)!=0){
         ));
         
         echo "Formulaire validé et enregistré dans la base de donnée.";
-        header("location: index.php?action=login&display=sucess");
+        //header("location: index.php?action=accueil");
         
     }else{
         echo "<b>Erreur dans la validation du formulaire ! Erreur(s) :$error</b><br/>";
-        header("location: index.php?action=logup&display=error");
+        //header("location: index.php?action=connexion_inscription");
     }
     
 }else{
     echo "Erreur !!! Aucun formulaire a été envoyé. Veuillez recommencer.";
-    header("location: index.php?action=logup&display=error");
+    //header("location: index.php?action=connexion_inscription");
 }
 
 ?>
