@@ -25,7 +25,7 @@
         </div>
         
         <div class="logo">
-            <img src="images/logo.png" alt="logo">
+            <img src="images/logo.png" alt="logo" width="250px" height="250px">
         </div>
       
         <div class="inscription">
