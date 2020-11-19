@@ -19,6 +19,7 @@ html{
 body{
     background-image: url(../images/background.png);
     background-size: 100%;
+    background-repeat: no-repeat;
     font-family: "Arial";
 }
 
@@ -94,4 +95,19 @@ body{
 .inscription input[type=submit]{
     margin-left: 200px;
     margin-top: 20px;
+}
+
+.page_404{
+    text-align: center;
+    color: #B2ADD6;
+    margin-top: 300px;
+}
+
+.page_404 p{
+    font-size: 40px;
+}
+
+.page_404 a{
+    font-size: 25px;
+    color: #B2ADD6;
 }

@@ -4,6 +4,12 @@
 ?>
 
 <!-- <body> -->
-ERROR 404 !!! Page not found !
-<a href="index.php?action=accueil">Retour à l'accueil</a>
+<div class="page_404">
+    
+    <img src="../images/logo.png" alt="logo">
+    <p>ERROR 404 ! Page not found ! </p><br/>
+    <a href="index.php?action=accueil">Retour à l'accueil</a>
+    
+</div>
+
 <!-- </body> -->
