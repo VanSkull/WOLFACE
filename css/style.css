@@ -100,7 +100,7 @@ body{
 .page_404{
     text-align: center;
     color: #B2ADD6;
-    margin-top: 300px;
+    margin-top: 200px;
 }
 
 .page_404 p{
@@ -110,4 +110,99 @@ body{
 .page_404 a{
     font-size: 25px;
     color: #B2ADD6;
+}
+
+.page_accueil{
+    display: flex;
+}
+
+#sidebar-menu{
+    text-align: center;
+    font-size: 20px;
+    color: #9D9DCE;
+    background-color: #EFEEEE;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#sidebar-menu #photoDeProfil{
+    height: 150px;
+    width: 150px;
+}
+
+#menu-liens{
+    margin-top: 25px;
+}
+
+#liste-amis{
+    margin-top: 25px;
+}
+
+#sidebar-menu #lien-deconnexion{
+    margin-top: 300px;
+}
+
+#main-contain{
+    background-color: #46417F;
+}
+
+#friend-search{
+    margin-top: 50px;
+    margin-left: 250px;
+    padding: 10px;
+    width: 800px;
+}
+
+.contain_contain-accueil{
+    background-color: #EFEEEE;
+    margin-left: 100px;
+    margin-top: 50px;
+    border-radius: 3%;
+}
+
+#post{
+    background-color: #9D9DCE;
+    margin-left: 50px;
+    border-radius: 5%;
+    display: flex;
+}
+
+#post img{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#pdp{
+    height: 100px;
+    width: 100px;
+}
+
+#part-text #name{
+    color: #EFEEEE;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+#part-text img{
+    width: 200px;
+    height: 200px;
+}
+
+#quiQuand{
+    text-align: right;
+}
+
+#copyright{
+    color:#EFEEEE;
+}
+
+#copyright img{
+    height: 100px;
+    width: 100px;
+}
+
+#copyright-text{
+    text-align: right;
 }
