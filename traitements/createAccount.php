@@ -3,9 +3,9 @@ $checkForm = true; //Vérification du formulaire
 $error = "";
 
 if(isset($_POST) && count($_POST)!=0){
-    echo "<pre>";
+    /*echo "<pre>";
     print_r($_POST);
-    echo "</pre>";
+    echo "</pre>";*/
     
     //Vérification du nom et prénom
     if(!isset($_POST["nom"]) || !isset($_POST["prenom"])){
@@ -46,7 +46,7 @@ if(isset($_POST) && count($_POST)!=0){
         $gender = $_POST["sexe"];
         $birth = $_POST["birth"];
         
-        $sql = "INSERT INTO users(family_name, user_name, email, password, gender, dateOfBirth) VALUES(:family, :name, :email, PASSWORD(:mdp), :avatar, :gender, :date)";
+        $sql = "INSERT INTO users(family_name, user_name, email, password, avatar, gender, dateOfBirth) VALUES(:family, :name, :email, PASSWORD(:mdp), :avatar, :gender, :date)";
 
         // Etape 1  : preparation
         $q = $pdo->prepare($sql);
@@ -63,16 +63,16 @@ if(isset($_POST) && count($_POST)!=0){
         ));
         
         echo "Formulaire validé et enregistré dans la base de donnée.";
-        //header("location: index.php?action=accueil");
+        header("location: index.php?action=accueil");
         
     }else{
         echo "<b>Erreur dans la validation du formulaire ! Erreur(s) :$error</b><br/>";
-        //header("location: index.php?action=connexion_inscription");
+        header("location: index.php?action=connexion_inscription");
     }
     
 }else{
     echo "Erreur !!! Aucun formulaire a été envoyé. Veuillez recommencer.";
-    //header("location: index.php?action=connexion_inscription");
+    header("location: index.php?action=connexion_inscription");
 }
 
 ?>

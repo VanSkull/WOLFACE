@@ -36,8 +36,8 @@
                 <input type="text" name="email" id="email" value="" placeholder="email"/><br/>
                 <input type="password" name="mdp" id="mdp" value="" placeholder="mot de passe"/><br/>
                 <input type="password" name="mdpconf" id="mdpconf" value="" placeholder="Confirmation mot de passe"/> <br/>
-                <label for="birth">Date de naissance</label>
-                <input type="date" name="birth" id="birth" value="Date de naissance :"/> <br/>
+                <label for="birth">Date de naissance : </label>
+                <input type="date" name="birth" id="birth" /> <br/>
                 <ul>
                     <ul>
                         <label for="sexe">Sexe :</label>
