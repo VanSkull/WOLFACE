@@ -35,7 +35,7 @@
         </div>
         
         <div class="contain_contain-accueil">
-            <br/>
+            
             <div id="post">
                 <img src="images/img_profil.png" alt="photoDeProfil" id="pdp">
                 <div id="part-text">
@@ -45,18 +45,26 @@
                 </div>
             </div>
             
-            <p>Commentaires</p>
-            <img src="images/img_profil.png" alt="photoDeProfil" id="pdp">
-            <div id="part-text">
-                <p>Quoi de neuf ?</p>
-                <p id="quiQuand">Posté par PRENOM NOM le DATE à HEURE</p>
+            <div id="commentaires">
+                <p>Commentaires</p>
+                <div class="comm_text">
+                    <img src="images/img_profil.png" alt="photoDeProfil" id="pdp">
+                    <div id="part-text">
+                        <p id="text">Quoi de neuf ?</p>
+                        <p id="quiQuand">Posté par PRENOM NOM le DATE à HEURE</p>
+                    </div>
+                </div>
+                
+                <div class="comm_text">
+                    <img src="images/img_profil.png" alt="photoDeProfil" id="pdp">
+                    <div id="part-text">
+                        <p id="text">Heu... J'ai cru voir un gros minet !!</p>
+                        <p id="quiQuand">Posté par PRENOM NOM le DATE à HEURE</p>
+                    </div> 
+                </div>
             </div>
-            <img src="images/img_profil.png" alt="photoDeProfil" id="pdp">
-            <div id="part-text">
-                <p>Heu... J'ai cru voir un gros minet !!</p>
-                <p id="quiQuand">Posté par PRENOM NOM le DATE à HEURE</p>
-            </div>            
         </div>
+        
         
         <div id="copyright">
             <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
