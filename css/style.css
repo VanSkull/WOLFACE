@@ -166,14 +166,17 @@ body{
     background-color: #EFEEEE;
     margin-left: 100px;
     margin-top: 50px;
-    border-radius: 3%;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
 
 #post{
     background-color: #9D9DCE;
     margin-left: 50px;
-    border-radius: 5%;
+    border-radius: 10px;
     display: flex;
+    margin-right: 200px;
 }
 
 #post img{
@@ -200,6 +203,37 @@ body{
 
 #quiQuand{
     text-align: right;
+    font-size: 15px;
+    color: #46417F;
+}
+
+#commentaires{
+    margin-left: 50px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.comm_text{
+    display: flex;
+    margin: 10px;
+}
+
+.comm_text #part-text{
+    margin-left: 20px;
+    padding-right: 200px;
+}
+
+#part-text #text{
+    background-color: #9D9DCE;
+    border-radius: 50px;
+    margin-top: 30px;
+    padding: 10px;
+    color: #EFEEEE;
+}
+
+#part-text #quiQuand{
+    margin-left: 300px;
+    
 }
 
 #copyright{
