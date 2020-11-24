@@ -1,7 +1,7 @@
 <?php
 
 include("config/config.php");
-//include("config/bd.php"); // commentaire
+include("config/bd.php"); // commentaire
 include("divers/balises.php");
 include("config/actions.php");
 session_start();
@@ -17,10 +17,10 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
      var_dump($_SESSION);
      echo "</pre>";*/
 
-if(!(isset($_SESSION)) || count($_SESSION) == 0){
+/*if(!(isset($_SESSION)) || count($_SESSION) == 0){
     message("Création de la session");
     header('Location: index.php?action=connexion_inscription');
-}
+}*/
 
 ?>
 <!DOCTYPE html>

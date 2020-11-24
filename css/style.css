@@ -49,6 +49,10 @@ body{
     width: 400px;
 }
 
+.connexion input[type=password]{
+    width: 400px;
+}
+
 .connexion a{
     text-decoration: underline;
     text-decoration-color: #B2ADD6;
@@ -81,6 +85,10 @@ body{
 }
 
 .inscription input[type=text]{
+    width: 400px;
+}
+
+.inscription input[type=password]{
     width: 400px;
 }
 

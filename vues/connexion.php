@@ -18,9 +18,9 @@
             <form method="post" action="index.php?action=login">
                 <h1>CONNEXION</h1> 
                 <input type="text" name="login" id="email" value="" placeholder="email"/> <br/>
-                <input type="text" name="password" id="mdp" value="" placeholder="mot de passe"/> <br/>
+                <input type="password" name="password" id="mdp" value="" placeholder="mot de passe"/> <br/>
                 <a href="#">Mot de passe oublié ?</a><br/>
-                <input type="submit" name="connexion" value="Connexion"/>
+                <input type="submit" value="Connexion"/>
             </form>
         </div>
         
@@ -34,26 +34,26 @@
                 <input type="text" name="nom" id="nom" value="" placeholder="NOM"/>
                 <input type="text" name="prenom" id="prenom" value="" placeholder="PRENOM"/> <br/>
                 <input type="text" name="email" id="email" value="" placeholder="email"/><br/>
-                <input type="text" name="mdp" id="mdp" value="" placeholder="mot de passe"/><br/>
-                <input type="text" name="mdpconf" id="mdpconf" value="" placeholder="Confirmation mot de passe"/> <br/>
+                <input type="password" name="mdp" id="mdp" value="" placeholder="mot de passe"/><br/>
+                <input type="password" name="mdpconf" id="mdpconf" value="" placeholder="Confirmation mot de passe"/> <br/>
                 <label for="birth">Date de naissance</label>
                 <input type="date" name="birth" id="birth" value="Date de naissance :"/> <br/>
                 <ul>
                     <ul>
                         <label for="sexe">Sexe :</label>
-                        <input type="radio" id="masculin" name="sexe" value="Masculin" checked>
+                        <input type="radio" id="masculin" name="sexe" value="homme" checked>
                         <label for="maculin">Masculin</label>
                     </ul>
                     <ul>
-                        <input type="radio" id="feminin" name="sexe" value="Féminin">
+                        <input type="radio" id="feminin" name="sexe" value="femme">
                         <label for="feminin">Féminin</label>
                     </ul>
                     <ul>
-                        <input type="radio" id="autre" name="sexe" value="Autre">
+                        <input type="radio" id="autre" name="sexe" value="autre">
                         <label for="autre">Autre</label>
                     </ul>
                 </ul>
-                <input type="submit" name="connexion" value="Connexion"/>
+                <input type="submit" value="Connexion"/>
             </form>
         </div>
     </div>

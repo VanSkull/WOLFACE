@@ -13,6 +13,12 @@ if(isset($_POST) && count($_POST)!=0){
         $error = $error . " Données invalides (identifiant).";
     }
     
+    //Vérification du genre
+    if(!isset($_POST["sexe"]) || ($_POST["sexe"] != "homme" && $_POST["sexe"] != "femme" && $_POST["sexe"] != "autre")){
+        $checkForm = false;
+        $error = $error . " Données invalides (genre).";
+    }
+    
     //Vérification du e-mail
     if(!isset($_POST["email"]) || filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)==false){
         $checkForm = false;
@@ -36,17 +42,24 @@ if(isset($_POST) && count($_POST)!=0){
         $user_name = $_POST["prenom"];
         $email = $_POST["email"];
         $mdp = $_POST["mdp"];
+        $avatar = "image";
+        $gender = $_POST["sexe"];
+        $birth = $_POST["birth"];
         
-        $sql = "INSERT INTO users(login, mdp, email) VALUES(:login, PASSWORD(:mdp), :email)";
+        $sql = "INSERT INTO users(family_name, user_name, email, password, gender, dateOfBirth) VALUES(:family, :name, :email, PASSWORD(:mdp), :avatar, :gender, :date)";
 
         // Etape 1  : preparation
         $q = $pdo->prepare($sql);
 
         // Etape 2 : execution : 2 paramètres dans la requêtes !!
         $q->execute(array(
-            'login' => $login,
+            'family' => $family_name,
+            'name' => $user_name,
+            'email' => $email,
             'mdp' => $mdp,
-            'email' => $email
+            'avatar' => $avatar,
+            'gender' => $gender,
+            'date' => $birth
         ));
         
         echo "Formulaire validé et enregistré dans la base de donnée.";
