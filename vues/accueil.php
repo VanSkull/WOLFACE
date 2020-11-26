@@ -30,9 +30,12 @@
     </div>
 
     <div id="main-contain">
-        <div id="recherche">
-            <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami">
-        </div>
+        
+        
+            <div id="recherche">
+                <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami">
+            </div>
+        
         
         <div class="contain_contain-accueil">
             
@@ -64,8 +67,9 @@
                 </div>
             </div>
         </div>
-        
-        
+    </div>
+    
+    <div class="footer">
         <div id="copyright">
             <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
             <p id="copyright-text">
