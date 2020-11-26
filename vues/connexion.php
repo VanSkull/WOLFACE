@@ -17,8 +17,8 @@
         <div class="connexion">
             <form method="post" action="index.php?action=login">
                 <h1>CONNEXION</h1> 
-                <input type="text" name="login" id="email" value="" placeholder="email"/> <br/>
-                <input type="password" name="password" id="mdp" value="" placeholder="mot de passe"/> <br/>
+                <input type="text" name="login" id="email" value="" placeholder="E-mail"/> <br/>
+                <input type="password" name="password" id="mdp" value="" placeholder="Mot de passe"/> <br/>
                 <a href="#">Mot de passe oublié ?</a><br/>
                 <input type="submit" value="Connexion"/>
             </form>
@@ -31,10 +31,10 @@
         <div class="inscription">
             <form method="post" action="index.php?action=inscription">
                 <h1>INSCRIPTION</h1>
-                <input type="text" name="nom" id="nom" value="" placeholder="NOM"/>
-                <input type="text" name="prenom" id="prenom" value="" placeholder="PRENOM"/> <br/>
-                <input type="text" name="email" id="email" value="" placeholder="email"/><br/>
-                <input type="password" name="mdp" id="mdp" value="" placeholder="mot de passe"/><br/>
+                <input type="text" name="nom" id="nom" value="" placeholder="Nom"/>
+                <input type="text" name="prenom" id="prenom" value="" placeholder="Prénom"/> <br/>
+                <input type="text" name="email" id="email" value="" placeholder="E-mail"/><br/>
+                <input type="password" name="mdp" id="mdp" value="" placeholder="Mot de passe"/><br/>
                 <input type="password" name="mdpconf" id="mdpconf" value="" placeholder="Confirmation mot de passe"/> <br/>
                 <label for="birth">Date de naissance : </label>
                 <input type="date" name="birth" id="birth" /> <br/>

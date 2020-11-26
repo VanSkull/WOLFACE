@@ -1,6 +1,9 @@
 <?php
     //echo "Page d'accueil.";
-
+    if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
+            //message("Création de la session");
+            header('Location: index.php?action=connexion_inscription');
+    }
 ?>
 
 <!-- <body> -->
@@ -9,7 +12,7 @@
     <div id="sidebar-menu">
         <div id="profil">
             <img id="photoDeProfil" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-            <p id="prenomNom">Prénom Nom</p>
+            <p id="prenomNom"><?php echo $_SESSION["login"] ?></p>
         </div>
 
         <nav id="menu-liens">
