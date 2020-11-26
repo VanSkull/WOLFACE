@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 24 nov. 2020 à 10:18
+-- Généré le :  jeu. 26 nov. 2020 à 13:25
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -103,7 +103,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gender` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `dateOfBirth` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `family_name`, `user_name`, `email`, `password`, `avatar`, `gender`, `dateOfBirth`) VALUES
+(6, 'Vanhaecke', 'Valentin', 'valentinvanh@gmail.com', '*93DFEB986734251E1E583787D3F59337CCC63DCC', 'image', 'homme', '2001-06-27');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
