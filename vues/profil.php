@@ -62,7 +62,29 @@
                     </div>
                 </div>
                 <div id="profil-amis">
-                    <h3 id="amis-titre">Mes amis</h3>            
+                    <h3 id="amis-titre">Mes amis</h3>
+                    <?php
+                    //Liste d'envoi d'amis
+                    $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=?";
+                
+                    $q2 = $pdo->prepare($sql_envoi);
+
+                    $q2->execute(array($_SESSION["id"]));
+
+                    while($line2 = $q2->fetch()){
+                        echo "<pre>";
+                        print_r($line2);
+                        echo "</pre>";
+                        ?>
+                        <div class="carte-ami">
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <span class="nom-ami"><?php echo $line2["user_name"]+" "+$line2["user_name"]; ?></span>
+                            <span class="status-ami">Demande envoyée</span>
+                        </div>
+                        <?php
+                    }                  
+                    
+                    ?>
                     <div class="carte-ami">
                         <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                         <span class="nom-ami">Prénom Nom</span>
