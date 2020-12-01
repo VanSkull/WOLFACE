@@ -39,27 +39,29 @@
                 <div id="profil-entete">
                     <img id="photoDeProfil-entete" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                     <div id="infos">
-                        <span id="profil-prenomNom">Prénom Nom</span>
-                        <span id="profil-naissance">Date de naissance</span>
+                        <span id="profil-prenomNom">Prénom Nom</span><br/>
+                        <span id="profil-naissance">Date de naissance</span><br/>
                         <span id="profil-sexe">Sexe</span>
                     </div>
                 </div>
                 <div id="profil-amis">
-                    <h3 id="amis-titre">Mes amis</h3>
-                    <div class="carte-ami">
-                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                        <span class="nom-ami">Prénom Nom</span>
-                        <span class="status-ami">Vous êtes déjà ami</span>
-                    </div>
-                    <div class="carte-ami">
-                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                        <span class="nom-ami">Prénom Nom</span>
-                        <span class="status-ami">Vous êtes déjà ami</span>
-                    </div>
-                    <div class="carte-ami">
-                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                        <span class="nom-ami">Prénom Nom</span>
-                        <span class="status-ami">Vous êtes déjà ami</span>
+                    <h1 id="amis-titre">Mes amis</h1>
+                    <div class="ligne_carte-ami">
+                        <div class="carte-ami">
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <span class="nom-ami">Prénom Nom</span>
+                            <span class="status-ami">Vous êtes déjà ami</span>
+                        </div>
+                        <div class="carte-ami">
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <span class="nom-ami">Prénom Nom</span>
+                            <span class="status-ami">Vous êtes déjà ami</span>
+                        </div>
+                        <div class="carte-ami">
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <span class="nom-ami">Prénom Nom</span>
+                            <span class="status-ami">Vous êtes déjà ami</span>
+                        </div>
                     </div>
                 </div>
                 <div id="profil-post">

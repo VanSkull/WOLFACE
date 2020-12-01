@@ -294,9 +294,49 @@ body{
 .contain_contain-profil{
     background-color: #EFEEEE;
     margin: 50px;
+    padding-right: 
     border-radius: 10px;
 }
 
 #profil-entete{
     display: flex;
+    margin: 25px;
+    padding: 10px;
+    padding-left: 400px;
+}
+
+#photoDeProfil-entete{
+    height: 200px;
+    width: 200px;
+}
+
+#infos{
+    font-size: 20px;
+    color: #9D9DCE;
+    margin: 10px;
+}
+
+#amis-titre{
+    text-align: center;
+    color: #9D9DCE;
+    font-size: 25px;
+}
+
+.ligne_carte-ami{
+    display: flex;
+}
+
+.carte-ami{
+    margin-right: 50px;
+    margin-left: 50px;
+    background-color: #9D9DCE;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #EFEEEE;
+    text-align: center;
+}
+.carte-ami img{
+    height: 150px;
+    width: 150px;
 }
