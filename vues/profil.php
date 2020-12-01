@@ -1,5 +1,5 @@
 <?php
-    //echo "Page d'accueil.";
+    //echo "Page de profil.";
     if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
             //message("Création de la session");
             header('Location: index.php?action=connexion_inscription');
@@ -13,13 +13,13 @@
     <div id="sidebar-menu">
         <div id="profil">
             <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
-            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo $_SESSION["login"]; ?></p>
+            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
 
         <nav id="menu-liens">
             <a href="index.php?action=accueil">Accueil</a>
             <a href="index.php?action=amis">Notifications</a>
-            <a href="index.php?action=profil">Mon profil</a>
+            <a href="index.php?action=profil&id_profil=<?php echo $_SESSION["id"]; ?>">Mon profil</a>
         </nav>
 
         <div id="liste-amis">
@@ -35,33 +35,70 @@
 
     <div id="main-contain">
         <div class="contain_contain-profil">
+            <?php
+                $sql = "SELECT * FROM users where id=?";
+                
+                $q = $pdo->prepare($sql);
+                
+                $q->execute(array($_GET["id_profil"]));
+            
+                $line = $q->fetch();
+                /*echo "<pre>";
+                print_r($line);
+                echo "</pre>";*/
+            
+                if(!$line){
+                    header("Location: index.php?action=accueil");
+                }else{
+                
+            ?>
             <div id="profil-infos">
                 <div id="profil-entete">
                     <img id="photoDeProfil-entete" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                     <div id="infos">
-                        <span id="profil-prenomNom">Prénom Nom</span><br/>
-                        <span id="profil-naissance">Date de naissance</span><br/>
-                        <span id="profil-sexe">Sexe</span>
+                        <span id="profil-prenomNom"><?php  echo ucwords($line["user_name"]." ".$line["family_name"]); ?></span>
+                        <span id="profil-naissance"><?php $time = strtotime($line["dateOfBirth"]); $date = date('d-m-Y', $time); echo $date; ?></span>
+                        <span id="profil-sexe"><?php echo ucwords($line["gender"]); ?></span>
                     </div>
                 </div>
                 <div id="profil-amis">
-                    <h1 id="amis-titre">Mes amis</h1>
-                    <div class="ligne_carte-ami">
+                    <h3 id="amis-titre">Mes amis</h3>
+                    <?php
+                    //Liste d'envoi d'amis
+                    $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=?";
+                
+                    $q2 = $pdo->prepare($sql_envoi);
+
+                    $q2->execute(array($_SESSION["id"]));
+
+                    while($line2 = $q2->fetch()){
+                        echo "<pre>";
+                        print_r($line2);
+                        echo "</pre>";
+                        ?>
                         <div class="carte-ami">
                             <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            <span class="nom-ami">Prénom Nom</span>
-                            <span class="status-ami">Vous êtes déjà ami</span>
+                            <span class="nom-ami"><?php echo $line2["user_name"]+" "+$line2["user_name"]; ?></span>
+                            <span class="status-ami">Demande envoyée</span>
                         </div>
-                        <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            <span class="nom-ami">Prénom Nom</span>
-                            <span class="status-ami">Vous êtes déjà ami</span>
-                        </div>
-                        <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            <span class="nom-ami">Prénom Nom</span>
-                            <span class="status-ami">Vous êtes déjà ami</span>
-                        </div>
+                        <?php
+                    }                  
+                    
+                    ?>
+                    <div class="carte-ami">
+                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                        <span class="nom-ami">Prénom Nom</span>
+                        <span class="status-ami">Vous êtes déjà ami</span>
+                    </div>
+                    <div class="carte-ami">
+                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                        <span class="nom-ami">Prénom Nom</span>
+                        <span class="status-ami">Vous êtes déjà ami</span>
+                    </div>
+                    <div class="carte-ami">
+                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                        <span class="nom-ami">Prénom Nom</span>
+                        <span class="status-ami">Vous êtes déjà ami</span>
                     </div>
                 </div>
                 <div id="profil-post">
@@ -134,6 +171,9 @@
                     </div>
                 </div>
             </div>
+            <?php
+                }
+            ?>
         </div>
         <div id="copyright">
             <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
