@@ -1,6 +1,9 @@
 <?php
-    //echo "Page de profil.";
-
+    //echo "Page d'accueil.";
+    if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
+            //message("Création de la session");
+            header('Location: index.php?action=connexion_inscription');
+    }
 ?>
 
 <!-- <body> -->
