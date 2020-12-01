@@ -12,17 +12,32 @@
     <div id="sidebar-menu">
         <div id="profil">
             <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
-            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo $_SESSION["login"]; ?></p>
+            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
 
         <nav id="menu-liens">
             <a href="index.php?action=accueil">Accueil</a><br/>
             <a href="index.php?action=amis">Notifications</a><br/>
-            <a href="index.php?action=profil">Mon profil</a>
+            <a href="index.php?action=profil&id_profil=<?php echo $_SESSION["id"]; ?>">Mon profil</a>
         </nav>
 
         <div id="liste-amis">
             <ul>
+                <?php
+                    /*
+                    $sql = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON isUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?) LIMIT 0, 5";
+                    
+                    $q = $pdo->prepare($sql);
+                
+                    $q->execute(array($_POST["id"], $_POST["id"]));
+                
+                    while($line = $q->fetch()){
+                        echo "<pre>";
+                        var_dump($line);
+                        echo "</pre>";
+                    }
+                    */
+                ?>
                 <li><a href="index.php?action=profil&id_profil=1" class="ami-lien">Ami 1</a></li>
                 <li><a href="index.php?action=profil&id_profil=2" class="ami-lien">Ami 2</a></li>
                 <li><a href="index.php?action=profil&id_profil=3" class="ami-lien">Ami 3</a></li>

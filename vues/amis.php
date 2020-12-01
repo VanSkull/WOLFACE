@@ -1,5 +1,5 @@
 <?php
-    //echo "Page d'accueil.";
+    //echo "Page d'amis.";
     if(!(isset($_SESSION["id"])) || !(isset($_SESSION["login"]))){
             //message("Création de la session");
             header('Location: index.php?action=connexion_inscription');
@@ -11,13 +11,13 @@
 <div id="sidebar-menu">
     <div id="profil">
         <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
-        <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo $_SESSION["login"]; ?></p>
+        <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
     </div>
     
     <nav id="menu-liens">
         <a href="index.php?action=accueil">Accueil</a>
         <a href="index.php?action=amis">Notifications</a>
-        <a href="index.php?action=profil">Mon profil</a>
+        <a href="index.php?action=profil&id_profil=<?php echo $_SESSION["id"]; ?>">Mon profil</a>
     </nav>
     
     <div id="liste-amis">
