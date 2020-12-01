@@ -55,5 +55,10 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
 
             ob_end_flush(); // Je ferme le buffer, je vide la mémoire et affiche tout ce qui doit l'être
         ?>
+        <script>
+            function viewProfil(id){
+                document.location.href = "index.php?action=profil&id_profil="+id;
+            }
+        </script>
     </body>
 </html>

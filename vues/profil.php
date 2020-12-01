@@ -8,11 +8,12 @@
 
 <!-- <body> -->
 <!--PAGE DE PROFIL UTILISATEUR-->
+
 <div class="page_accueil">
     <div id="sidebar-menu">
         <div id="profil">
-            <img id="photoDeProfil" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-            <p id="prenomNom">Prénom Nom</p>
+            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
+            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo $_SESSION["login"]; ?></p>
         </div>
 
         <nav id="menu-liens">
