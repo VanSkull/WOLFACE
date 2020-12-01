@@ -290,3 +290,13 @@ body{
 #copyright-text{
     text-align: right;
 }
+
+.contain_contain-profil{
+    background-color: #EFEEEE;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+#profil-entete{
+    display: flex;
+}
