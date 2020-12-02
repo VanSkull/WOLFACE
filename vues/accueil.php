@@ -54,6 +54,13 @@
         
         
         <div class="contain_contain-accueil">
+            <div id="ecrit-post">
+                <form action="index.php?action=ajoutPost" method="post">
+                    <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/>
+                    <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
+                    <input type="submit" value="Envoyer">
+                </form>
+            </div>
             
             <div id="post">
                 <img src="images/img_profil.png" alt="photoDeProfil" id="pdp">

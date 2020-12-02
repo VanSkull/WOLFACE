@@ -52,6 +52,36 @@
                 $sql = "SELECT * FROM users where id=?";
                 
                 $q = $pdo->prepare($sql);
+            
+                /*$ok = false;
+                if(!(isset($_GET["id_profil"])) || !(is_numeric($_GET["id_profil"])) || $_GET["id"]==$_SESSION["id"]){
+                    $id = $_SESSION["id"];
+                    $ok = true;
+                }else{
+                    $id = $_GET["id_profil"];
+                    // Verifions si on est amis avec cette personne
+                    $sql_verif = "SELECT * FROM friends WHERE state='ami'
+                            AND ((idUser1=? AND idUser2=?) OR ((idUser1=? AND idUser2=?)))";
+                    $q_verif = $pdo->prepare($sql_verif);
+                    
+                    $q_verif->execute(array($_GET["id_profil"], $_SESSION["id"], $_SESSION["id"], $_GET["id_profil"]));
+                    
+                    $line_verif = $q_verif->fetch();
+                    echo "<pre>";
+                    print_r($line_verif);
+                    echo "</pre>";
+
+                    if(!$line_verif){
+                        $ok = false;
+                    }else{
+                        $ok = true;                        
+                    }                    
+                }
+                if($ok == false){
+
+                }else{
+
+                }*/                
                 
                 $q->execute(array($_GET["id_profil"]));
             
@@ -74,61 +104,80 @@
                         <span id="profil-sexe"><?php echo ucwords($line["gender"]); ?></span>
                     </div>
                 </div>
+                <div id="ecrit-post">
+                    <form action="index.php?action=ajoutPost" method="post">
+                        <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/>
+                        <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
+                        <?php
+                            if($line["id"] != $_SESSION["id"]){
+                                echo "<input type='hidden' name='idAmi' value='".$line['id']."' />";
+                            }
+                        ?>
+                        <input type="submit" value="Envoyer">
+                    </form>
+                </div>
                 <div id="profil-amis">
                     <h3 id="amis-titre">Mes amis</h3>
                     <?php
-                    //Liste d'envoi d'amis
-                    $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=?";
-                
-                    $q2 = $pdo->prepare($sql_envoi);
+                    if($line["id"] == $_SESSION["id"]){
+                        //Liste d'envoi d'amis
+                        $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=?";
 
-                    $q2->execute(array($_SESSION["id"]));
+                        $q2 = $pdo->prepare($sql_envoi);
 
-                    while($line2 = $q2->fetch()){
-                        /*echo "<pre>";
-                        print_r($line2);
-                        echo "</pre>";*/
-                        ?>
-                        <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
-                            <span class="status-ami">Demande envoyée</span>
-                        </div>
-                        <?php
-                    }                  
-                    
+                        $q2->execute(array($_SESSION["id"]));
+
+                        while($line2 = $q2->fetch()){
+                            /*echo "<pre>";
+                            print_r($line2);
+                            echo "</pre>";*/
+                            ?>
+                            <div class="carte-ami">
+                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                                <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
+                                <span class="status-ami">Demande envoyée</span>
+                            </div>
+                            <?php
+                        }                  
+                    }
                     ?>
                     <?php
-                    //Liste de demande d'amis
-                    $sql_demande = "SELECT users.* FROM users WHERE id IN(SELECT idUser1 FROM friends WHERE idUser2=? AND state='attente')";
-                
-                    $q3 = $pdo->prepare($sql_demande);
+                    if($line["id"] == $_SESSION["id"]){
+                        //Liste de demande d'amis
+                        $sql_demande = "SELECT users.* FROM users WHERE id IN(SELECT idUser1 FROM friends WHERE idUser2=? AND state='attente')";
 
-                    $q3->execute(array($_SESSION["id"]));
+                        $q3 = $pdo->prepare($sql_demande);
 
-                    while($line3 = $q3->fetch()){
-                        /*echo "<pre>";
-                        print_r($line3);
-                        echo "</pre>";*/
-                        ?>
-                        <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
-                            <span class="status-ami">Demande reçu</span>
-                            <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
-                            <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
-                        </div>
-                        <?php
-                    }                  
-                    
+                        $q3->execute(array($_SESSION["id"]));
+
+                        while($line3 = $q3->fetch()){
+                            /*echo "<pre>";
+                            print_r($line3);
+                            echo "</pre>";*/
+                            ?>
+                            <div class="carte-ami">
+                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                                <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
+                                <span class="status-ami">Demande reçu</span>
+                                <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                                <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
+                            </div>
+                            <?php
+                        }                  
+                    }
                     ?>
                     <?php
                     //Liste d'amis confirmés
                     $sql_amis = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?)";
                 
                     $q4 = $pdo->prepare($sql_amis);
-
-                    $q4->execute(array($_SESSION["id"], $_SESSION["id"]));
+                    
+                    if($line["id"] == $_SESSION["id"]){
+                        $q4->execute(array($_SESSION["id"], $_SESSION["id"]));
+                    }else{
+                        $q4->execute(array($_GET["id_profil"], $_GET["id_profil"]));
+                    }
+                        
 
                     while($line4 = $q4->fetch()){
                         /*echo "<pre>";
@@ -162,6 +211,19 @@
                 </div>
                 <div id="profil-post">
                     <h3 id="post-titre">Mes posts</h3>
+                    <?php
+                        //Liste des posts
+                        $sql_posts = "SELECT * FROM posts WHERE idAuteur=? OR idAmi=?";
+
+                        $q_posts = $pdo->prepare($sql_posts);
+                        
+                        $q_posts->execute(array($_GET["id_profil"], $_GET["id_profil"]));
+                        
+                        while($line_posts = $q_posts->fetch()){
+                            /*echo "<pre>";
+                            var_dump($line_posts);
+                            echo "</pre>";*/
+                    ?>
                     <div class="post-perso">
                         <div class="main-post">
                             <div class="photo-profil-auteur">
@@ -169,8 +231,9 @@
                             </div>
                             <div class="text-post">
                                 <p class="nom-auteur">PRENOM NOM</p>
-                                <p class="post-auteur">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et enim neque. Cras tincidunt hendrerit dignissim. Integer et ligula porttitor, pharetra erat id, lacinia justo. Vivamus ipsum sapien, auctor quis lectus eget, volutpat feugiat nisl. Nam consectetur, mauris vitae aliquam sagittis, justo velit interdum felis, dapibus lacinia velit augue sit amet odio. Fusce bibendum congue leo sed vestibulum. Vivamus mauris quam, suscipit sed porta bibendum, ultricies eget sapien. Phasellus id tempus lorem. Morbi id gravida urna, eget semper leo. Donec eu volutpat enim.</p>
-                                <p class="date-post">Posté par PRENOM NOM le DATE à HEURE</p>
+                                <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
+                                <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
+                                <p class="date-post">Posté par PRENOM NOM le <?php echo $line_posts["datePost"]; ?></p>
                             </div>
                         </div>
                         <div class="commentaire-post">
@@ -195,6 +258,12 @@
                             </div>
                         </div>                            
                     </div>
+                    
+                    <?php
+                        }
+                    ?>
+                    
+                    
                     <div class="post-perso">
                         <div class="main-post">
                             <div class="photo-profil-auteur">
