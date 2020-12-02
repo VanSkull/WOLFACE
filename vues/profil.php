@@ -197,16 +197,6 @@
                         <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                         <span class="nom-ami">Prénom Nom</span>
                         <span class="status-ami">Vous êtes déjà ami</span>
-                    </div>
-                    <div class="carte-ami">
-                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                        <span class="nom-ami">Prénom Nom</span>
-                        <span class="status-ami">Vous êtes déjà ami</span>
-                    </div>
-                    <div class="carte-ami">
-                        <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                        <span class="nom-ami">Prénom Nom</span>
-                        <span class="status-ami">Vous êtes déjà ami</span>
                     </div>-->
                 </div>
                 <div id="profil-post">
@@ -286,8 +276,7 @@
                     
                     <?php
                         }
-                    ?>
-                    
+                    ?>                    
                     
                     <!--<div class="post-perso">
                         <div class="main-post">
