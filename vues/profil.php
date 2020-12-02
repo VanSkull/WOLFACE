@@ -72,20 +72,66 @@
                     $q2->execute(array($_SESSION["id"]));
 
                     while($line2 = $q2->fetch()){
-                        echo "<pre>";
+                        /*echo "<pre>";
                         print_r($line2);
-                        echo "</pre>";
+                        echo "</pre>";*/
                         ?>
                         <div class="carte-ami">
                             <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
-                            <span class="nom-ami"><?php echo $line2["user_name"]+" "+$line2["user_name"]; ?></span>
+                            <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
                             <span class="status-ami">Demande envoyée</span>
                         </div>
                         <?php
                     }                  
                     
                     ?>
-                    <div class="carte-ami">
+                    <?php
+                    //Liste de demande d'amis
+                    $sql_demande = "SELECT users.* FROM users WHERE id IN(SELECT idUser1 FROM friends WHERE idUser2=? AND state='attente')";
+                
+                    $q3 = $pdo->prepare($sql_demande);
+
+                    $q3->execute(array($_SESSION["id"]));
+
+                    while($line3 = $q3->fetch()){
+                        /*echo "<pre>";
+                        print_r($line3);
+                        echo "</pre>";*/
+                        ?>
+                        <div class="carte-ami">
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
+                            <span class="status-ami">Demande reçu</span>
+                            <a class="bouton-accept" href="index.php?action=accept">Accepter</a>
+                            <a class="bouton-reject" href="index.php?action=reject">Refuser</a>
+                        </div>
+                        <?php
+                    }                  
+                    
+                    ?>
+                    <?php
+                    //Liste d'amis confirmés
+                    $sql_amis = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?)";
+                
+                    $q4 = $pdo->prepare($sql_amis);
+
+                    $q4->execute(array($_SESSION["id"], $_SESSION["id"]));
+
+                    while($line4 = $q4->fetch()){
+                        /*echo "<pre>";
+                        print_r($line4);
+                        echo "</pre>";*/
+                        ?>
+                        <div class="carte-ami">
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <span class="nom-ami"><?php echo $line4["family_name"]." ".$line4["user_name"]; ?></span>
+                            <span class="status-ami">Vous êtes amis</span>
+                        </div>
+                        <?php
+                    }                  
+                    
+                    ?>
+                    <!--<div class="carte-ami">
                         <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                         <span class="nom-ami">Prénom Nom</span>
                         <span class="status-ami">Vous êtes déjà ami</span>
@@ -99,7 +145,7 @@
                         <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                         <span class="nom-ami">Prénom Nom</span>
                         <span class="status-ami">Vous êtes déjà ami</span>
-                    </div>
+                    </div>-->
                 </div>
                 <div id="profil-post">
                     <h3 id="post-titre">Mes posts</h3>
