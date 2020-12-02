@@ -24,23 +24,21 @@
         <div id="liste-amis">
             <ul>
                 <?php
-                    /*
-                    $sql = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON isUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?) LIMIT 0, 5";
+                    $sql = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?) LIMIT 0, 5";
                     
                     $q = $pdo->prepare($sql);
                 
-                    $q->execute(array($_POST["id"], $_POST["id"]));
+                    $q->execute(array($_SESSION["id"], $_SESSION["id"]));
                 
                     while($line = $q->fetch()){
-                        echo "<pre>";
+                        /*echo "<pre>";
                         var_dump($line);
-                        echo "</pre>";
-                    }
-                    */
+                        echo "</pre>";*/
                 ?>
-                <li><a href="index.php?action=profil&id_profil=1" class="ami-lien">Ami 1</a></li>
-                <li><a href="index.php?action=profil&id_profil=2" class="ami-lien">Ami 2</a></li>
-                <li><a href="index.php?action=profil&id_profil=3" class="ami-lien">Ami 3</a></li>
+                <li><a href="index.php?action=profil&id_profil=<?php echo $line["id"]; ?>" class="ami-lien"><?php echo $line["family_name"]." ".$line["user_name"]; ?></a></li>
+                <?php
+                    }
+                ?>
             </ul>
         </div>
 

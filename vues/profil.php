@@ -24,9 +24,22 @@
 
         <div id="liste-amis">
             <ul>
-                <li><a href="index.php?action=profil&id_profil=1" class="ami-lien">Ami 1</a></li>
-                <li><a href="index.php?action=profil&id_profil=2" class="ami-lien">Ami 2</a></li>
-                <li><a href="index.php?action=profil&id_profil=3" class="ami-lien">Ami 3</a></li>
+                <?php
+                     $sql = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?) LIMIT 0, 5";
+
+                     $q = $pdo->prepare($sql);
+
+                     $q->execute(array($_SESSION["id"], $_SESSION["id"]));
+
+                     while($line = $q->fetch()){
+                         /*echo "<pre>";
+                         var_dump($line);
+                         echo "</pre>";*/
+                 ?>
+                 <li><a href="index.php?action=profil&id_profil=<?php echo $line["id"]; ?>" class="ami-lien"><?php echo $line["family_name"]." ".$line["user_name"]; ?></a></li>
+                 <?php
+                     }
+                 ?>
             </ul>
         </div>
 
@@ -102,8 +115,8 @@
                             <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
                             <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
                             <span class="status-ami">Demande reçu</span>
-                            <a class="bouton-accept" href="index.php?action=accept">Accepter</a>
-                            <a class="bouton-reject" href="index.php?action=reject">Refuser</a>
+                            <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
+                            <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
                         </div>
                         <?php
                     }                  

@@ -17,7 +17,10 @@ $listeDesActions = array(
     "supprLike" => "traitements/deleteLike.php",
     "login" => "traitements/connexion.php",
     "logout" => "traitements/deconnexion.php",
-    "inscription" => "traitements/createAccount.php"
-);
+    "inscription" => "traitements/createAccount.php",
+    "demande" => "traitements/demandeAmi.php",
+    "accept" => "traitements/acceptAmi.php",
+    "reject" => "traitements/rejectAmi.php"
+)
 
 ?>
