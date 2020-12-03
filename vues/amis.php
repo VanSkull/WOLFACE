@@ -47,7 +47,7 @@
 <div id="main-contain">
     <div class="contain contain-amis">
         <?php
-            $sql2 = "SELECT * FROM users WHERE id != ?";
+            $sql2 = "SELECT users.id AS IDUser, users.*, friends.* FROM users INNER JOIN friends ON users.id=friends.idUser1 OR users.id=friends.idUser2 WHERE users.id != ?";
         
             $q2 = $pdo->prepare($sql2);
         
@@ -59,10 +59,34 @@
                 echo "</pre>";
         ?>
 
-        <div class="carte-ami">
+        <div class="carte-ami" onclick="viewProfil(<?php echo $line2["IDUser"]; ?>);">
             <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
             <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
-            <span class="status-ami">Demande envoyée</span>
+            <?php
+                if(($line2["idUser1"]==$line2["IDUser"] && $line2["idUser2"]==$_SESSION["id"]) || ($line2["idUser1"]==$_SESSION["id"] && $line2["idUser2"]==$line2["IDUser"])){
+            ?>
+                    <span class="status-ami">Vous êtes amis</span>
+            <?php
+                }else if(){
+            ?>
+                    <span class="status-ami">Demande envoyée</span>
+            <?php
+                }else if(){
+            ?>
+                    <span class="status-ami">Demande reçue</span>
+                    <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line2["IDUser"]; ?>">Accepter</a>
+                    <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line2["IDUser"]; ?>">Refuser</a>
+            <?php
+                }else if(){
+            ?>
+                    <span class="status-ami">Vous n'êtes pas amis</span>
+            <?php
+                }else{
+            ?>
+                    <span class="status-ami">Inconnu</span>
+            <?php
+                }
+            ?>            
         </div>
         
         <?php

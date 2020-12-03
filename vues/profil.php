@@ -158,7 +158,7 @@
                             <div class="carte-ami">
                                 <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line3["family_name"]."_".$line3["user_name"]; ?>" />
                                 <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
-                                <span class="status-ami">Demande reçu</span>
+                                <span class="status-ami">Demande reçue</span>
                                 <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
                                 <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["id"]; ?>">Refuser</a>
                             </div>
