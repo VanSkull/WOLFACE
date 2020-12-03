@@ -13,7 +13,7 @@
     <div id="sidebar-menu">
         <div id="profil">
             <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
-            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo $_SESSION["login"]; ?></p>
+            <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
 
         <nav id="menu-liens">
@@ -276,6 +276,7 @@
                     
                     <?php
                         }
+                }
                     ?>                    
                     
                     <!--<div class="post-perso">

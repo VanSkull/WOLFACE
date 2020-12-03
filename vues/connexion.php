@@ -53,7 +53,7 @@
                         <label for="autre">Autre</label>
                     </ul>
                 </ul>
-                <input type="submit" value="Connexion"/>
+                <input type="submit" value="Inscription"/>
             </form>
         </div>
     </div>

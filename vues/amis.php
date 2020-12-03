@@ -47,48 +47,64 @@
 <div id="main-contain">
     <div class="contain contain-amis">
         <?php
-            $sql2 = "SELECT users.id AS IDUser, users.*, friends.* FROM users INNER JOIN friends ON users.id=friends.idUser1 OR users.id=friends.idUser2 WHERE users.id != ?";
+            $sql2 = "SELECT users.id AS IDUser, users.* FROM users WHERE users.id != ? ORDER BY users.family_name, users.user_name";
+            //INNER JOIN friends ON users.id=friends.idUser1 OR users.id=friends.idUser2     
         
             $q2 = $pdo->prepare($sql2);
         
             $q2->execute(array($_SESSION["id"]));
             
             while($line2 = $q2->fetch()){
-                echo "<pre>";
+                /*echo "<pre>";
                 var_dump($line2);
-                echo "</pre>";
+                echo "</pre>";*/
         ?>
 
         <div class="carte-ami" onclick="viewProfil(<?php echo $line2["IDUser"]; ?>);">
             <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
             <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
             <?php
-                if(($line2["idUser1"]==$line2["IDUser"] && $line2["idUser2"]==$_SESSION["id"]) || ($line2["idUser1"]==$_SESSION["id"] && $line2["idUser2"]==$line2["IDUser"])){
-            ?>
-                    <span class="status-ami">Vous êtes amis</span>
-            <?php
-                }else if(){
-            ?>
-                    <span class="status-ami">Demande envoyée</span>
-            <?php
-                }else if(){
-            ?>
-                    <span class="status-ami">Demande reçue</span>
-                    <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line2["IDUser"]; ?>">Accepter</a>
-                    <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line2["IDUser"]; ?>">Refuser</a>
-            <?php
-                }else if(){
-            ?>
-                    <span class="status-ami">Vous n'êtes pas amis</span>
-            <?php
-                }else{
+                //Attribution de l'état de l'amitié                
+                $sql3 = "SELECT * FROM friends WHERE (idUser1=? AND idUser2=?) OR (idUser1=? AND idUser2=?)";
+                     
+
+                $q3 = $pdo->prepare($sql3);
+
+                $q3->execute(array($_SESSION["id"], $line2["IDUser"], $line2["IDUser"], $_SESSION["id"]));
+                
+                $line3 = $q3->fetch();
+
+                /*echo "<pre>";
+                var_dump($line3);
+                echo "</pre>";*/
+                
+                if(!$line3){
             ?>
                     <span class="status-ami">Inconnu</span>
             <?php
+                }else{
+                    if($line3["state"]=="ami"){
+            ?>
+                    <span class="status-ami">Vous êtes amis</span>
+            <?php
+                    }else if($line3["idUser1"]==$_SESSION["id"] && $line3["state"]=="attente"){
+            ?>
+                    <span class="status-ami">Demande envoyée</span>
+            <?php
+                    }else if($line3["idUser2"]==$_SESSION["id"] && $line3["state"]=="attente"){
+            ?>
+                    <span class="status-ami">Demande reçue</span>
+                    <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["idUser1"]; ?>">Accepter</a>
+                    <a class="bouton-reject" href="index.php?action=reject&id=<?php echo $line3["idUser1"]; ?>">Refuser</a>
+            <?php
+                    }else if($line3["state"]=="refus"){
+            ?>
+                    <span class="status-ami">Vous n'êtes pas amis</span>
+            <?php  
+                    }
                 }
-            ?>            
+            ?>
         </div>
-        
         <?php
             }
         ?>
