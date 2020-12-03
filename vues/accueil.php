@@ -77,7 +77,7 @@
             <div class="post-perso">
                 <div class="main-post">
                     <div class="photo-profil-auteur">
-                        <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                        <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_posts["family_name"]."_".$line_posts["user_name"]; ?>" />
                     </div>
                     <div class="text-post">
                         <p class="nom-auteur"><?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?></p>
@@ -111,7 +111,7 @@
                     ?>
                     <div class="commentaire">
                         <div class="photo-commentateur">
-                            <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
                         </div>
                         <div class="main-commentaire">
                             <p class="commentaire-commentateur"><?php echo $line_comments["content"]; ?></p>

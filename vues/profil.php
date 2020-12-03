@@ -97,9 +97,9 @@
             ?>
             <div id="profil-infos">
                 <div id="profil-entete">
-                    <img id="photoDeProfil-entete" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                    <img id="photoDeProfil-entete" src="images/img_profil.png" alt="Photo_de_profil_de_<?php  echo $line["family_name"]."_".$line["user_name"]; ?>" />
                     <div id="infos">
-                        <span id="profil-prenomNom"><?php  echo ucwords($line["user_name"]." ".$line["family_name"]); ?></span>
+                        <span id="profil-prenomNom"><?php  echo ucwords($line["family_name"]." ".$line["user_name"]); ?></span>
                         <span id="profil-naissance"><?php $time = strtotime($line["dateOfBirth"]); $date = date('d-m-Y', $time); echo $date; ?></span>
                         <span id="profil-sexe"><?php echo ucwords($line["gender"]); ?></span>
                     </div>
@@ -133,7 +133,7 @@
                             echo "</pre>";*/
                             ?>
                             <div class="carte-ami">
-                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
                                 <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
                                 <span class="status-ami">Demande envoyée</span>
                             </div>
@@ -156,7 +156,7 @@
                             echo "</pre>";*/
                             ?>
                             <div class="carte-ami">
-                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line3["family_name"]."_".$line3["user_name"]; ?>" />
                                 <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
                                 <span class="status-ami">Demande reçu</span>
                                 <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
@@ -185,7 +185,7 @@
                         echo "</pre>";*/
                         ?>
                         <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line4["family_name"]."_".$line4["user_name"]; ?>" />
                             <span class="nom-ami"><?php echo $line4["family_name"]." ".$line4["user_name"]; ?></span>
                             <span class="status-ami">Vous êtes amis</span>
                         </div>
@@ -217,7 +217,7 @@
                     <div class="post-perso">
                         <div class="main-post">
                             <div class="photo-profil-auteur">
-                                <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                                <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_posts["family_name"]."_".$line_posts["user_name"]; ?>" />
                             </div>
                             <div class="text-post">
                                 <p class="nom-auteur"><?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?></p>
@@ -252,7 +252,7 @@
                             ?>
                             <div class="commentaire">
                                 <div class="photo-commentateur">
-                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_#" />
+                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
                                 </div>
                                 <div class="main-commentaire">
                                     <p class="commentaire-commentateur"><?php echo $line_comments["content"]; ?></p>

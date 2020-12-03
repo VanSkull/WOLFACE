@@ -46,6 +46,29 @@
 
 <div id="main-contain">
     <div class="contain contain-amis">
+        <?php
+            $sql2 = "SELECT * FROM users WHERE id != ?";
+        
+            $q2 = $pdo->prepare($sql2);
+        
+            $q2->execute(array($_SESSION["id"]));
+            
+            while($line2 = $q2->fetch()){
+                echo "<pre>";
+                var_dump($line2);
+                echo "</pre>";
+        ?>
+
+        <div class="carte-ami">
+            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
+            <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
+            <span class="status-ami">Demande envoyée</span>
+        </div>
+        
+        <?php
+            }
+        ?>
+        
         <!-- Mettre le code ici -->        
     </div>
     <div id="copyright">
