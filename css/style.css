@@ -279,7 +279,7 @@ body{
 #copyright{
     color:#EFEEEE;
     margin-top: 599px;
-    padding: 10px;
+    padding: 0px;
 }
 
 #copyright img{
@@ -291,10 +291,14 @@ body{
     text-align: right;
 }
 
+#main-contain_profil{
+    display: flex;
+    background-color: #46417F; 
+}
+
 .contain_contain-profil{
     background-color: #EFEEEE;
     margin: 50px;
-    padding-right: 
     border-radius: 10px;
 }
 
@@ -302,7 +306,8 @@ body{
     display: flex;
     margin: 25px;
     padding: 10px;
-    padding-left: 400px;
+    padding-left: 300px;
+    align-items: center;
 }
 
 #photoDeProfil-entete{
@@ -339,4 +344,81 @@ body{
 .carte-ami img{
     height: 150px;
     width: 150px;
+}
+
+#post-titre{
+    text-align: center;
+    color: #9D9DCE;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.main-post{
+    display: flex;
+    align-items: center;
+    background-color: #9D9DCE;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.photo-profil-auteur img{
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+}
+
+.text-post{
+    color: #EFEEEE;
+    margin-top: 10px;
+}
+
+.nom-auteur{
+    font-size: 20px;
+}
+
+.post-auteur{
+    font-size: 15px;
+}
+
+.date-post{
+    color: #46417F;
+    font-size: 10px;
+    text-align: right;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.commentaire-post{
+    margin: 20px;
+}
+
+.titre-commentaire{
+    font-size: 20px;
+}
+
+.commentaire{
+    display: flex;
+    align-items: center;
+}
+
+.photo-commentateur img{
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+}
+
+.commentaire-commentateur{
+    font-size: 15px;
+    color: #E5E4EA;
+    background-color:#9D9DCE; 
+    padding: 10px;
+    padding-right: 600px;
+    border-radius: 20px;
+}
+
+.date-commentaire{
+    color: #46417F;
+    font-size: 10px;
+    text-align: right;
+    padding: 5px;
 }
