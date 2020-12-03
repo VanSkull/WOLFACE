@@ -64,7 +64,7 @@
             
             <?php
                 //Liste des posts
-                $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=?";
+                $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
                 $q_posts = $pdo->prepare($sql_posts);
                 
                 $q_posts->execute(array($_SESSION["id"], $_SESSION["id"]));
@@ -99,7 +99,7 @@
                     
                     <?php
                         //Liste des posts
-                        $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=?";
+                        $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
 
                         $q_comments = $pdo->prepare($sql_comments);
                         $q_comments->execute(array($line_posts["IDPost"]));

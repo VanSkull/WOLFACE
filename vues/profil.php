@@ -51,37 +51,7 @@
             <?php
                 $sql = "SELECT * FROM users where id=?";
                 
-                $q = $pdo->prepare($sql);
-            
-                /*$ok = false;
-                if(!(isset($_GET["id_profil"])) || !(is_numeric($_GET["id_profil"])) || $_GET["id"]==$_SESSION["id"]){
-                    $id = $_SESSION["id"];
-                    $ok = true;
-                }else{
-                    $id = $_GET["id_profil"];
-                    // Verifions si on est amis avec cette personne
-                    $sql_verif = "SELECT * FROM friends WHERE state='ami'
-                            AND ((idUser1=? AND idUser2=?) OR ((idUser1=? AND idUser2=?)))";
-                    $q_verif = $pdo->prepare($sql_verif);
-                    
-                    $q_verif->execute(array($_GET["id_profil"], $_SESSION["id"], $_SESSION["id"], $_GET["id_profil"]));
-                    
-                    $line_verif = $q_verif->fetch();
-                    echo "<pre>";
-                    print_r($line_verif);
-                    echo "</pre>";
-
-                    if(!$line_verif){
-                        $ok = false;
-                    }else{
-                        $ok = true;                        
-                    }                    
-                }
-                if($ok == false){
-
-                }else{
-
-                }*/                
+                $q = $pdo->prepare($sql);               
                 
                 $q->execute(array($_GET["id_profil"]));
             
@@ -104,6 +74,57 @@
                         <span id="profil-sexe"><?php echo ucwords($line["gender"]); ?></span>
                     </div>
                 </div>
+                
+                <?php
+                    
+                    $ok = false;
+                    $ami = false;
+                    
+                    if($_GET["id_profil"]==$_SESSION["id"]){
+                        $ok = true;
+                    }else{
+                        // Verifions si on est amis avec cette personne
+                        $sql_verif = "SELECT * FROM friends WHERE (idUser1=? AND idUser2=?) OR (idUser1=? AND idUser2=?)";
+                        $q_verif = $pdo->prepare($sql_verif);
+
+                        $q_verif->execute(array($_GET["id_profil"], $_SESSION["id"], $_SESSION["id"], $_GET["id_profil"]));
+
+                        $line_verif = $q_verif->fetch();
+                        /*echo "<pre>";
+                        print_r($line_verif);
+                        echo "</pre>";*/
+
+                        if(!$line_verif){
+                            $ok = false;
+                        }else{
+                            $ok = true;   
+                            if($line_verif["state"]=="ami"){
+                                $ami = true;
+                            }else{
+                                $ami = false;
+                            }
+                        }                    
+                    }
+                    
+                    //var_dump($ok);
+                    
+                    if($ok == false){
+                ?>
+                    <div id="message-autorisation">
+                        <p>Vous n'êtes pas encore ami, vous ne pouvez pas voir son mur.</p>
+                        <a href="index.php?action=demande&id=<?php echo $_GET["id_profil"]; ?>" id="lien-demande">Faire une demande d'ami</a>
+                    </div>
+                <?php
+                    }else{
+                        if($ami == false){
+                ?>
+                            <div id="message-autorisation">
+                                <p>Vous n'êtes pas ami, vous ne pouvez pas et vous ne verrez jamais son mur !</p>
+                            </div>
+                <?php
+                        }else{
+                ?>        
+                
                 <div id="ecrit-post">
                     <form action="index.php?action=ajoutPost" method="post">
                         <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/>
@@ -121,7 +142,7 @@
                     <?php
                     if($line["id"] == $_SESSION["id"]){
                         //Liste d'envoi d'amis
-                        $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=?";
+                        $sql_envoi = "SELECT users.* FROM users INNER JOIN friends ON users.id=idUser2 AND state='attente' AND idUser1=? ORDER BY users.family_name, user_name";
 
                         $q2 = $pdo->prepare($sql_envoi);
 
@@ -144,7 +165,7 @@
                     <?php
                     if($line["id"] == $_SESSION["id"]){
                         //Liste de demande d'amis
-                        $sql_demande = "SELECT users.* FROM users WHERE id IN(SELECT idUser1 FROM friends WHERE idUser2=? AND state='attente')";
+                        $sql_demande = "SELECT users.* FROM users WHERE id IN(SELECT idUser1 FROM friends WHERE idUser2=? AND state='attente') ORDER BY users.family_name, user_name";
 
                         $q3 = $pdo->prepare($sql_demande);
 
@@ -168,7 +189,7 @@
                     ?>
                     <?php
                     //Liste d'amis confirmés
-                    $sql_amis = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?)";
+                    $sql_amis = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?) ORDER BY users.family_name, user_name";
                 
                     $q4 = $pdo->prepare($sql_amis);
                     
@@ -203,7 +224,7 @@
                     <h3 id="post-titre">Mes posts</h3>
                     <?php
                         //Liste des posts
-                        $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=?";
+                        $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
 
                         $q_posts = $pdo->prepare($sql_posts);
                         
@@ -239,7 +260,7 @@
                             
                             <?php
                                 //Liste des posts
-                                $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=?";
+                                $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
 
                                 $q_comments = $pdo->prepare($sql_comments);
 
@@ -313,6 +334,13 @@
                         </div>                            
                     </div>-->
                 </div>
+                <?php
+                            
+                        }
+
+                    }
+                                     
+                ?>
             </div>
         </div>
         <div id="copyright">
