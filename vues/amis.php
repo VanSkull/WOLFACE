@@ -16,7 +16,7 @@
     
     <nav id="menu-liens">
         <a href="index.php?action=accueil">Accueil</a>
-        <a href="index.php?action=amis">Notifications</a>
+        <a href="index.php?action=amis">Amis</a>
         <a href="index.php?action=profil&id_profil=<?php echo $_SESSION["id"]; ?>">Mon profil</a>
     </nav>
     
