@@ -45,13 +45,7 @@
         <a href="index.php?action=logout" id="lien-deconnexion">Déconnexion</a>
     </div>
 
-    <div id="main-contain">
-        
-        
-            <div id="recherche">
-                <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami">
-            </div>
-        
+    <div id="main-contain">        
         
         <div class="contain_contain-accueil">
             <div id="ecrit-post">

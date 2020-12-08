@@ -45,6 +45,11 @@
 </div>
 
 <div id="main-contain">
+    
+    <div id="recherche">
+        <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami">
+    </div>
+    
     <div class="contain contain-amis">
         <?php
             $sql2 = "SELECT users.id AS IDUser, users.* FROM users WHERE users.id != ? ORDER BY users.family_name, users.user_name";
