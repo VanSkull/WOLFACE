@@ -82,6 +82,7 @@
                     
                     if($_GET["id_profil"]==$_SESSION["id"]){
                         $ok = true;
+                        $ami = true;
                     }else{
                         // Verifions si on est amis avec cette personne
                         $sql_verif = "SELECT * FROM friends WHERE (idUser1=? AND idUser2=?) OR (idUser1=? AND idUser2=?)";
@@ -90,20 +91,20 @@
                         $q_verif->execute(array($_GET["id_profil"], $_SESSION["id"], $_SESSION["id"], $_GET["id_profil"]));
 
                         $line_verif = $q_verif->fetch();
-                        /*echo "<pre>";
+                        echo "<pre>";
                         print_r($line_verif);
-                        echo "</pre>";*/
+                        echo "</pre>";
 
                         if(!$line_verif){
                             $ok = false;
                         }else{
                             $ok = true;   
-                            if($line_verif["state"]=="ami"){
+                            if($line_verif["state"]=="ami" || $_GET["id_profil"] == $_SESSION["id"]){
                                 $ami = true;
                             }else{
                                 $ami = false;
                             }
-                        }                    
+                        }
                     }
                     
                     //var_dump($ok);
