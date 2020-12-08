@@ -59,6 +59,22 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
             function viewProfil(id){
                 document.location.href = "index.php?action=profil&id_profil="+id;
             }
+            
+            function searchPerson(regex){
+                let patern = new RegExp(regex);
+                console.log(patern);
+                
+                let allUsers = document.getElementsByClassName("carte-ami");
+                /*console.log(allUsers);*/
+                
+                let allNomBrut = document.getElementsByClassName("nom-ami");
+                let allNom = [];
+                
+                for(let i = 0; i < allNomBrut.length; i++){
+                    allNom.push(allNomBrut[i].innerText.toLowerCase());
+                }
+                console.log(allNom);
+            }
         </script>
     </body>
 </html>

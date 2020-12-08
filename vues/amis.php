@@ -47,7 +47,7 @@
 <div id="main-contain">
     
     <div id="recherche">
-        <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami">
+        <input type="search" id="friend-search" name="fs" placeholder="Rechercher un ami" onkeyup="searchPerson(this.value.toLowerCase());">
     </div>
     
     <div class="contain contain-amis">
