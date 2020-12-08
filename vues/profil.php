@@ -91,9 +91,9 @@
                         $q_verif->execute(array($_GET["id_profil"], $_SESSION["id"], $_SESSION["id"], $_GET["id_profil"]));
 
                         $line_verif = $q_verif->fetch();
-                        echo "<pre>";
+                        /*echo "<pre>";
                         print_r($line_verif);
-                        echo "</pre>";
+                        echo "</pre>";*/
 
                         if(!$line_verif){
                             $ok = false;
