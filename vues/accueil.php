@@ -50,9 +50,9 @@
         <div class="contain_contain-accueil">
             <div id="ecrit-post">
                 <form action="index.php?action=ajoutPost" method="post">
-                    <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/>
-                    <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
-                    <input type="submit" value="Envoyer">
+                    <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/><br/>
+                    <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea><br/>
+                    <input id="send-post" type="submit" value="Envoyer">
                 </form>
             </div>
             
@@ -87,7 +87,7 @@
                         <form action="index.php?action=ajoutCommentaire" method="post">
                             <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
                             <input type="hidden" name="idPost" value="<?php echo $line_posts["IDPost"]; ?>" />
-                            <input type="submit" value="Envoyer">
+                            <input id="send-commentaire" type="submit" value="Envoyer">
                         </form>
                     </div>
                     

@@ -200,6 +200,7 @@ body{
     width: 800px;
     border-radius: 10px;
     color: #9D9DCE;
+    font-size: 15px;
 }
 
 .contain_contain-accueil{
@@ -236,8 +237,22 @@ body{
 .text-post .nom-auteur{
     color: #EFEEEE;
     font-size: 20px;
-    margin-top: 25px;
     margin-left: 10px;
+}
+
+.text-post .titre-auteur{
+    color: #EFEEEE;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.text-post .post-auteur{
+    color: #EFEEEE;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
 .text-post img{
@@ -245,10 +260,11 @@ body{
     height: 200px;
 }
 
-.date-post{
+.text-post .date-post{
     text-align: right;
-    font-size: 15px;
+    font-size: 10px;
     color: #46417F;
+    margin-left: 550px;
 }
 
 .commentaire-post{
@@ -318,6 +334,7 @@ body{
 .contain_contain-profil{
     background-color: #EFEEEE;
     margin: 50px;
+    width: 1000px;
     border-radius: 10px;
 }
 
@@ -363,6 +380,13 @@ body{
 .carte-ami img{
     height: 150px;
     width: 150px;
+}
+
+#message-autorisation{
+    font-size: 20px;
+    color:#9D9DCE;
+    text-align: center;
+    margin-top: 100px;
 }
 
 #post-titre{
@@ -440,4 +464,55 @@ body{
     font-size: 10px;
     text-align: right;
     padding: 5px;
+}
+
+#ecrit-post{
+    font-size: 15px;
+}
+
+#title{
+    margin-top: 10px;
+    margin-left: 50px;
+    padding: 10px;
+    width: 400px;
+    border-radius: 10px;
+    color: #9D9DCE;
+}
+
+#content{
+    margin-top: 10px;
+    margin-left: 50px;
+    padding: 10px;
+    width: 850px;
+    height: 200px;;
+    border-radius: 10px;
+    color: #9D9DCE;
+}
+
+#send-post{
+    margin-top: 10px;
+    margin-left: 820px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #B2ADD6;
+    background-color: #46417F;
+}
+
+#send-post:hover{
+    background-color: #B2ADD6;
+    color: #46417F;
+}
+
+#send-commentaire{
+    margin-top: 10px;
+    margin-left: 820px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #B2ADD6;
+    background-color: #46417F;
+}
+
+#send-commentaire:hover{
+    background-color: #B2ADD6;
+    color: #46417F;
 }

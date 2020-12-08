@@ -69,8 +69,8 @@
                 <div id="profil-entete">
                     <img id="photoDeProfil-entete" src="images/img_profil.png" alt="Photo_de_profil_de_<?php  echo $line["family_name"]."_".$line["user_name"]; ?>" />
                     <div id="infos">
-                        <span id="profil-prenomNom"><?php  echo ucwords($line["family_name"]." ".$line["user_name"]); ?></span>
-                        <span id="profil-naissance"><?php $time = strtotime($line["dateOfBirth"]); $date = date('d-m-Y', $time); echo $date; ?></span>
+                        <span id="profil-prenomNom"><?php  echo ucwords($line["family_name"]." ".$line["user_name"]); ?></span><br/>
+                        <span id="profil-naissance"><?php $time = strtotime($line["dateOfBirth"]); $date = date('d-m-Y', $time); echo $date; ?></span><br/>
                         <span id="profil-sexe"><?php echo ucwords($line["gender"]); ?></span>
                     </div>
                 </div>
