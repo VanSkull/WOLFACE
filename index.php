@@ -74,6 +74,17 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
                     allNom.push(allNomBrut[i].innerText.toLowerCase());
                 }
                 console.log(allNom);
+                
+                for(let i = 0; i < allNom.length; i++){
+                    let matchText = patern.test(allNom[i]);
+                    console.log(matchText);
+                    if(matchText){
+                       allUsers[i].style.display = "flex";
+                    }else{
+                       allUsers[i].style.display = "none";                       
+                    }
+                }
+                
             }
         </script>
     </body>

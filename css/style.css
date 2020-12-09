@@ -376,6 +376,10 @@ body{
     font-size: 20px;
     color: #EFEEEE;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 .carte-ami img{
     height: 150px;
