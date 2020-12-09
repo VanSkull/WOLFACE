@@ -357,7 +357,17 @@ body{
     margin: 10px;
 }
 
+#profil-amis{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
 #amis-titre{
+    width: 100%;
     text-align: center;
     color: #9D9DCE;
     font-size: 25px;
@@ -367,9 +377,18 @@ body{
     display: flex;
 }
 
+.contain-amis{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
 .carte-ami{
-    margin-right: 50px;
-    margin-left: 50px;
+    width: auto;
+    margin: 10px 50px;
     background-color: #9D9DCE;
     padding: 20px;
     border-radius: 10px;
