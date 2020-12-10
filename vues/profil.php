@@ -255,7 +255,7 @@
                                 <form action="index.php?action=ajoutCommentaire" method="post">
                                     <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
                                     <input type="hidden" name="idPost" value="<?php echo $line_posts["IDPost"]; ?>" />
-                                    <input type="submit" value="Envoyer">
+                                    <input id="send_ecrit-commentaire" type="submit" value="Envoyer">
                                 </form>
                             </div>
                             

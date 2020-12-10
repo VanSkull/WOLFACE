@@ -20,7 +20,7 @@
                 <input type="text" name="login" id="email" value="" placeholder="E-mail"/> <br/>
                 <input type="password" name="password" id="mdp" value="" placeholder="Mot de passe"/> <br/>
                 <a href="#">Mot de passe oublié ?</a><br/>
-                <input type="submit" value="Connexion"/>
+                <input id="connexion-button" type="submit" value="Connexion"/>
             </form>
         </div>
         
@@ -53,7 +53,7 @@
                         <label for="autre">Autre</label>
                     </ul>
                 </ul>
-                <input type="submit" value="Inscription"/>
+                <input id="inscription-button" type="submit" value="Inscription"/>
             </form>
         </div>
     </div>
