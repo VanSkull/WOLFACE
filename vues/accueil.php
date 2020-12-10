@@ -68,7 +68,7 @@
                     var_dump($line_posts);
                     echo "</pre>";*/
             ?>
-            <div class="post-perso">
+            <div class="post-perso" id="post<?php echo $line_posts["IDPost"]; ?>">
                 <div class="main-post">
                     <div class="photo-profil-auteur">
                         <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_posts["family_name"]."_".$line_posts["user_name"]; ?>" />
@@ -77,6 +77,14 @@
                         <p class="nom-auteur"><?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?></p>
                         <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                         <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
+                        
+                        <form action="index.php?action=" method="post" class="=">
+                            <input type="hidden" name="action" value="<?php echo $_GET["action"]; ?>" />
+                            <input type="hidden" name="userId" value="<?php echo $_SESSION["id"]; ?>" />
+                            <input type="hidden" name="postId" value="<?php echo $line_posts["IDPost"]; ?>" />
+                            <button type="submit" class="like-button"><i class="fa fa-thumbs-up" style="color: red;"></i></button>
+                        </form>
+                        
                         <p class="date-post">Posté par <?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?> le <?php echo $line_posts["datePost"]; ?></p>
                     </div>
                 </div>
