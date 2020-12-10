@@ -47,10 +47,16 @@ body{
 
 .connexion input[type=text]{
     width: 400px;
+    border-radius: 10px;
+    color: #9D9DCE;
+    padding: 5px;
 }
 
 .connexion input[type=password]{
     width: 400px;
+    border-radius: 10px;
+    color: #9D9DCE;
+    padding: 5px;
 }
 
 .connexion a{
@@ -82,6 +88,9 @@ body{
 
 .inscription input{
     margin-bottom: 15px;
+    border-radius: 10px;
+    color: #9D9DCE;
+    padding: 5px;
 }
 
 .inscription input[type=text]{
@@ -103,6 +112,44 @@ body{
 .inscription input[type=submit]{
     margin-left: 200px;
     margin-top: 20px;
+}
+
+#connexion-button{
+    border-radius: 10px;
+    color: #46417F;
+    background-color: #B2ADD6;
+    padding: 5px;
+}
+
+#connexion-button:hover{
+    background-color: #46417F;
+    color: #B2ADD6;
+}
+
+#inscription-button{
+    border-radius: 10px;
+    color: #46417F;
+    background-color: #B2ADD6;
+    padding: 5px;
+}
+
+#inscription-button:hover{
+    background-color: #46417F;
+    color: #B2ADD6;
+}
+
+#send_ecrit-commentaire{
+    margin-top: 10px;
+    margin-left: 820px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #B2ADD6;
+    background-color: #46417F;
+}
+
+#send_ecrit-commentaire:hover{
+    background-color: #B2ADD6;
+    color: #46417F;
 }
 
 .page_404{
@@ -400,9 +447,30 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
+
 .carte-ami img{
     height: 150px;
     width: 150px;
+}
+
+.bouton-accept{
+    text-decoration: none;
+    color: #46417F;
+    font-weight: bold;
+}
+
+.bouton-accept:hover{
+    text-decoration: underline;
+}
+
+.bouton-reject{
+    text-decoration: none;
+    color: #46417F;
+    font-weight: bold;
+}
+
+.bouton-reject:hover{
+    text-decoration: underline;
 }
 
 #message-autorisation{
@@ -536,6 +604,20 @@ body{
 }
 
 #send-commentaire:hover{
+    background-color: #B2ADD6;
+    color: #46417F;
+}
+
+#send_ecrit-commentaire{
+    margin-top: 10px;
+    margin-left: 820px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #B2ADD6;
+    background-color: #46417F;
+}
+
+#send_ecrit-commentaire:hover{
     background-color: #B2ADD6;
     color: #46417F;
 }
