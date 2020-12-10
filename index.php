@@ -31,6 +31,7 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
         <meta name="keywords" content="réseau social, projet, minifacebook" />
         <link rel="icon" href="images/favicon.png" type="image/png" />        
         
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/normalize.css" rel="stylesheet" type="text/css" />
         <link href="css/style.css" rel="stylesheet" type="text/css" />
         
@@ -74,6 +75,17 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
                     allNom.push(allNomBrut[i].innerText.toLowerCase());
                 }
                 console.log(allNom);
+                
+                for(let i = 0; i < allNom.length; i++){
+                    let matchText = patern.test(allNom[i]);
+                    console.log(matchText);
+                    if(matchText){
+                       allUsers[i].style.display = "flex";
+                    }else{
+                       allUsers[i].style.display = "none";                       
+                    }
+                }
+                
             }
         </script>
     </body>
