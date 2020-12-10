@@ -58,15 +58,15 @@
             
             <?php
                 //Liste des posts
-                $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
+                $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost, likes.*, likes.id AS idLike FROM posts JOIN users ON users.id=posts.idAmi JOIN likes ON users.id=likes.idUser WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
                 $q_posts = $pdo->prepare($sql_posts);
                 
                 $q_posts->execute(array($_SESSION["id"], $_SESSION["id"]));
                 
                 while($line_posts = $q_posts->fetch()){
-                    /*echo "<pre>";
+                    echo "<pre>";
                     var_dump($line_posts);
-                    echo "</pre>";*/
+                    echo "</pre>";
             ?>
             <div class="post-perso" id="post<?php echo $line_posts["IDPost"]; ?>">
                 <div class="main-post">
@@ -78,7 +78,7 @@
                         <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                         <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
                         
-                        <form action="index.php?action=" method="post" class="=">
+                        <form action="index.php?action=ajoutLike" method="post">
                             <input type="hidden" name="action" value="<?php echo $_GET["action"]; ?>" />
                             <input type="hidden" name="userId" value="<?php echo $_SESSION["id"]; ?>" />
                             <input type="hidden" name="postId" value="<?php echo $line_posts["IDPost"]; ?>" />
@@ -100,7 +100,7 @@
                     </div>
                     
                     <?php
-                        //Liste des posts
+                        //Liste des commentaires
                         $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
 
                         $q_comments = $pdo->prepare($sql_comments);

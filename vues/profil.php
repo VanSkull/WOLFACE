@@ -245,6 +245,14 @@
                                 <p class="nom-auteur"><?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?></p>
                                 <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                                 <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
+                        
+                                <form action="index.php?action=ajoutLike" method="post">
+                                    <input type="hidden" name="action" value="<?php echo $_GET["action"]; ?>" />
+                                    <input type="hidden" name="userId" value="<?php echo $_SESSION["id"]; ?>" />
+                                    <input type="hidden" name="postId" value="<?php echo $line_posts["IDPost"]; ?>" />
+                                    <button type="submit" class="like-button"><i class="fa fa-thumbs-up" style="color: red;"></i></button>
+                                </form>
+                        
                                 <p class="date-post">Posté par <?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?> le <?php echo $line_posts["datePost"]; ?></p>
                             </div>
                         </div>
@@ -260,7 +268,7 @@
                             </div>
                             
                             <?php
-                                //Liste des posts
+                                //Liste des commentaires
                                 $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
 
                                 $q_comments = $pdo->prepare($sql_comments);
