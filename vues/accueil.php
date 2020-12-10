@@ -64,9 +64,9 @@
                 $q_posts->execute(array($_SESSION["id"], $_SESSION["id"]));
                 
                 while($line_posts = $q_posts->fetch()){
-                    echo "<pre>";
+                    /*echo "<pre>";
                     var_dump($line_posts);
-                    echo "</pre>";
+                    echo "</pre>";*/
             ?>
             <div class="post-perso" id="post<?php echo $line_posts["IDPost"]; ?>">
                 <div class="main-post">
