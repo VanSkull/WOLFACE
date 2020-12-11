@@ -70,11 +70,32 @@
             ?>
             <div class="post-perso" id="post<?php echo $line_posts["IDPost"]; ?>">
                 <div class="main-post">
+                    <?php
+                        $sql_auteur = "SELECT * FROM users WHERE id=? OR id=?";
+                        $q_auteur = $pdo->prepare($sql_auteur);
+
+                        $q_auteur->execute(array($line_posts["idAuteur"], $line_posts["idAmi"]));
+                        
+                        $auteur_nom = "";
+                        $ami_nom = "";                        
+                    
+                        while($line_auteur = $q_auteur->fetch()){
+                            /*echo "<pre>";
+                            var_dump($line_auteur);
+                            echo "</pre>";*/
+                            
+                            if($auteur_nom == ""){
+                                $auteur_nom = $line_auteur["family_name"]." ".$line_auteur["user_name"];
+                            }else{
+                                $ami_nom = $line_auteur["family_name"]." ".$line_auteur["user_name"];
+                            }
+                        }
+                    ?>
                     <div class="photo-profil-auteur">
-                        <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_posts["family_name"]."_".$line_posts["user_name"]; ?>" />
+                        <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo str_replace(" ", "_", $auteur_nom); ?>" />
                     </div>
                     <div class="text-post">
-                        <p class="nom-auteur"><?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?></p>
+                        <p class="nom-auteur"><?php echo $auteur_nom; if($ami_nom != ""){echo "   >>> $ami_nom";}?></p>
                         <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                         <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
                         
@@ -108,7 +129,7 @@
                             <span class="nb-likes-post"><?php echo $nb_like;?> like<?php if($nb_like > 1){echo "s";} ?></span>
                         </form>
                         
-                        <p class="date-post">Posté par <?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?> le <?php echo $line_posts["datePost"]; ?></p>
+                        <p class="date-post">Posté par <?php echo $auteur_nom; ?> le <?php echo $line_posts["datePost"]; ?></p>
                     </div>
                 </div>
                 <div class="commentaire-post">
