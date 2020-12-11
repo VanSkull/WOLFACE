@@ -577,6 +577,7 @@ body{
     width: 850px;
     height: 200px;;
     border-radius: 10px;
+    resize: vertical;
     color: #9D9DCE;
 }
 
@@ -620,4 +621,20 @@ body{
 #send_ecrit-commentaire:hover{
     background-color: #B2ADD6;
     color: #46417F;
+}
+
+button.like-button{
+    background: none;
+    border: none;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+button.like-button:hover{
+    cursor: pointer;
+}
+
+.nb-likes-post{
+    font-size: 1.5rem;
 }
