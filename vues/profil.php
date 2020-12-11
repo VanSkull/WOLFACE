@@ -236,7 +236,7 @@
                             var_dump($line_posts);
                             echo "</pre>";*/
                     ?>
-                    <div class="post-perso">
+                    <div class="post-perso" id="post<?php echo $line_posts["IDPost"]; ?>">
                         <div class="main-post">
                             <div class="photo-profil-auteur">
                                 <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_posts["family_name"]."_".$line_posts["user_name"]; ?>" />
@@ -246,11 +246,34 @@
                                 <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                                 <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
                         
-                                <form action="index.php?action=ajoutLike" method="post">
-                                    <input type="hidden" name="action" value="<?php echo $_GET["action"]; ?>" />
+                                <?php
+                                    $sql_like = "SELECT * FROM likes WHERE idPost=".$line_posts["IDPost"];
+                                    $q_like = $pdo->prepare($sql_like);
+
+                                    $q_like->execute();
+
+                                    $like_already = false;
+                                    $nb_like = 0;
+
+                                    while($line_like = $q_like->fetch()){
+                                        /*echo "<pre>";
+                                        var_dump($line_like);
+                                        echo "</pre>";*/
+
+                                        if($line_like["idUser"] == $_SESSION["id"]){
+                                            $like_already = true;
+                                        }
+
+                                        $nb_like++;
+                                    }
+
+                                ?>
+                                <form action="index.php?action=<?php if($like_already == true){echo "supprLike";}else{echo "ajoutLike";} ?>" method="post">
+                                    <input type="hidden" name="page" value="<?php echo "profil&id_profil=".$_GET["id_profil"]; ?>" />
                                     <input type="hidden" name="userId" value="<?php echo $_SESSION["id"]; ?>" />
                                     <input type="hidden" name="postId" value="<?php echo $line_posts["IDPost"]; ?>" />
-                                    <button type="submit" class="like-button"><i class="fa fa-thumbs-up" style="color: red;"></i></button>
+                                    <button type="submit" class="like-button"><i class="fa fa-thumbs-up" style="color: <?php if($like_already == true){echo "#46417f";}else{echo "#bfbfbf";} ?>;"></i></button>
+                                    <span class="nb-likes-post"><?php echo $nb_like;?> like<?php if($nb_like > 1){echo "s";} ?></span>
                                 </form>
                         
                                 <p class="date-post">Posté par <?php echo $line_posts["family_name"]." ".$line_posts["user_name"]; ?> le <?php echo $line_posts["datePost"]; ?></p>

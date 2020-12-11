@@ -1,6 +1,6 @@
 <?php
     
-    $action = $_POST["action"];
+    $action = $_POST["page"];
     $userNum = $_POST["userId"];
     $postNum = $_POST["postId"];
     
@@ -13,5 +13,5 @@
         'idPost' => $postNum
     ));
 
-    header("Location: index.php?action=".$action."#".$postNum);
+    header("Location: index.php?action=".$action."#post".$postNum);
 ?>
