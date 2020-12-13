@@ -376,6 +376,7 @@ body{
 #main-contain_profil{
     display: flex;
     background-color: #46417F; 
+    padding-left: 25px;
 }
 
 .contain_contain-profil{
@@ -428,7 +429,6 @@ body{
     width: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
 }
@@ -446,6 +446,7 @@ body{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 40px;
 }
 
 .carte-ami img{
@@ -495,6 +496,9 @@ body{
     border-radius: 10px;
 }
 
+.photo-profil-auteur{
+    
+}
 .photo-profil-auteur img{
     height: 100px;
     width: 100px;
@@ -606,6 +610,7 @@ label[for="image-file"]{
     border-radius: 10px;
     color: #B2ADD6;
     background-color: #46417F;
+    font-size: 20px;
 }
 
 #send-post:hover{
