@@ -406,6 +406,9 @@
                 ?>
             </div>
         </div>
+    </div>
+    
+    <div class="footer">
         <div id="copyright">
             <a id="lien-accueil" href="index.php?action=accueil"><img id="logo" src="images/logo.png" alt="Logo_Wolface" /></a>
             <p id="copyright-text">
