@@ -514,6 +514,14 @@ body{
     font-size: 15px;
 }
 
+.post-image{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .date-post{
     color: #46417F;
     font-size: 10px;
@@ -579,6 +587,16 @@ body{
     border-radius: 10px;
     resize: vertical;
     color: #9D9DCE;
+}
+
+label[for="image-file"]{    
+    margin-top: 10px;
+    margin-left: 50px;
+    color: #9D9DCE;
+}
+
+#image-file{
+    overflow: hidden;
 }
 
 #send-post{

@@ -127,14 +127,17 @@
                 ?>        
                 
                 <div id="ecrit-post">
-                    <form action="index.php?action=ajoutPost" method="post">
+                    <form action="index.php?action=ajoutPost" method="post" enctype="multipart/form-data">
                         <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/>
-                        <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea>
+                        <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea><br/>
+                        <label for="image-file">Une image (facultatif): </label><input type="file" id="image-file" name="image" accept="image/x-png, image/gif, image/jpg" data-max-size="1000000" /><br/>
                         <?php
                             if($line["id"] != $_SESSION["id"]){
                                 echo "<input type='hidden' name='idAmi' value='".$line['id']."' />";
                             }
                         ?>
+                        <input type="hidden" name="page" value="profil" />
+                        <input type="hidden" name="idProfil" value="<?php echo $_GET["id_profil"]; ?>" />
                         <input id="send-post" type="submit" value="Envoyer">
                     </form>
                 </div>
@@ -266,6 +269,13 @@
                                 <p class="nom-auteur"><?php echo $auteur_nom; if($ami_nom != ""){echo "   >>> $ami_nom";}?></p>
                                 <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                                 <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
+                                <?php
+                                    if($line_posts["image"] != ""){
+                                ?>
+                                <div class="post-image" style="background-image: url(<?php echo $line_posts["image"]; ?>);"></div>                        
+                                <?php
+                                    }
+                                ?>
                         
                                 <?php
                                     $sql_like = "SELECT * FROM likes WHERE idPost=".$line_posts["IDPost"];
