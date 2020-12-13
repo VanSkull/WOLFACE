@@ -103,7 +103,7 @@
                         <div class="lien-modif-post">
                             <span class="icon-modif-post"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></span>
                             <div class="overlay-modif-post">
-                                <a class="lien-suppr-post" href="index.php?action=supprPost&id=<?php echo $line_posts["IDPost"]; ?>">Supprimer</a>
+                                <a class="lien-suppr-post" href="index.php?action=supprPost&id=<?php echo $line_posts["IDPost"]; ?>&page=accueil">Supprimer</a>
                             </div>
                         </div>
                         <?php        
@@ -187,7 +187,7 @@
                             <div class="lien-modif-comment">
                                 <span class="icon-modif-comment"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></span>
                                 <div class="overlay-modif-comment">
-                                    <a class="lien-suppr-comment" href="index.php?action=supprCommentaire&id=<?php echo $line_comments["IDComment"]; ?>">Supprimer</a>
+                                    <a class="lien-suppr-comment" href="index.php?action=supprCommentaire&id=<?php echo $line_comments["IDComment"]; ?>&page=accueil&postId=<?php echo $line_posts["IDPost"]; ?>">Supprimer</a>
                                 </div>
                             </div>
                             <?php        
