@@ -97,6 +97,18 @@
                         <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo str_replace(" ", "_", $auteur_nom); ?>" />
                     </div>
                     <div class="text-post">
+                        <?php
+                            if($line_posts["idAuteur"] == $_SESSION["id"]){
+                        ?>
+                        <div class="lien-modif-post">
+                            <span class="icon-modif-post"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></span>
+                            <div class="overlay-modif-post">
+                                <a class="lien-suppr-post" href="index.php?action=supprPost&id=<?php echo $line_posts["IDPost"]; ?>">Supprimer</a>
+                            </div>
+                        </div>
+                        <?php        
+                            }
+                        ?>
                         <p class="nom-auteur"><?php echo $auteur_nom; if($ami_nom != ""){echo "   >>> $ami_nom";}?></p>
                         <p class="titre-auteur"><?php echo $line_posts["title"]; ?></p>
                         <p class="post-auteur"><?php echo $line_posts["content"]; ?></p>
@@ -154,7 +166,7 @@
                     
                     <?php
                         //Liste des commentaires
-                        $sql_comments = "SELECT comments.*, users.* FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
+                        $sql_comments = "SELECT comments.*, users.*, comments.id AS IDComment FROM comments JOIN users ON users.id=comments.idUser WHERE comments.idPost=? ORDER BY comments.dateComment DESC";
 
                         $q_comments = $pdo->prepare($sql_comments);
                         $q_comments->execute(array($line_posts["IDPost"]));
@@ -169,6 +181,18 @@
                             <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
                         </div>
                         <div class="main-commentaire">
+                            <?php
+                                if($line_comments["idUser"] == $_SESSION["id"]){
+                            ?>
+                            <div class="lien-modif-comment">
+                                <span class="icon-modif-comment"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></span>
+                                <div class="overlay-modif-comment">
+                                    <a class="lien-suppr-comment" href="index.php?action=supprCommentaire&id=<?php echo $line_comments["IDComment"]; ?>">Supprimer</a>
+                                </div>
+                            </div>
+                            <?php        
+                                }
+                            ?>
                             <p class="commentaire-commentateur"><?php echo $line_comments["content"]; ?></p>
                             <p class="date-commentaire">Posté par <?php echo $line_comments["family_name"]." ".$line_comments["user_name"]; ?> le <?php echo $line_comments["dateComment"]; ?></p>
                         </div>

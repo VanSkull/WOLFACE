@@ -333,6 +333,7 @@ body{
 }
 
 .commentaire .main-commentaire{
+    position: relative;
     margin-left: 20px;
     padding-right: 200px;
 }
@@ -502,8 +503,98 @@ body{
 }
 
 .text-post{
+    position: relative;
     color: #EFEEEE;
     margin-top: 10px;
+}
+
+.lien-modif-post{
+    position: absolute;
+    top: 5px;
+    right: -20px;
+}
+
+.lien-modif-post .icon-modif-post{
+    font-size: 0.5rem;
+    
+}
+
+.lien-modif-post .icon-modif-post i{
+    margin: 0 2px;
+}
+
+.lien-modif-post .overlay-modif-post{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 5px;
+    background-color: #ffffff;
+    border: 2px solid #afafaf;
+    border-radius: 5px;
+}
+
+.lien-modif-post .overlay-modif-post a{
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Arial";
+}
+
+.lien-modif-post .overlay-modif-post a.lien-suppr-post{
+    color: #ff0000;
+}
+
+.lien-modif-post .icon-modif-post:hover + .overlay-modif-post, .lien-modif-post .overlay-modif-post:hover{
+    display: flex;
+}
+
+.lien-modif-comment{
+    position: absolute;
+    top: 50%;
+    right: 140px;
+    transform: translateY(-50%);
+}
+
+.lien-modif-comment .icon-modif-comment{
+    font-size: 0.5rem;
+    
+}
+
+.lien-modif-comment .icon-modif-comment i{
+    margin: 0 2px;
+    color: #46417F;
+}
+
+.lien-modif-comment .overlay-modif-comment{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 5px;
+    background-color: #ffffff;
+    border: 2px solid #afafaf;
+    border-radius: 5px;
+}
+
+.lien-modif-comment .overlay-modif-comment a{
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 1rem;
+}
+
+.lien-modif-comment .overlay-modif-comment a.lien-suppr-comment{
+    color: #ff0000;
+}
+
+.lien-modif-comment .icon-modif-comment:hover + .overlay-modif-comment, .lien-modif-comment .overlay-modif-comment:hover{
+    display: flex;
 }
 
 .nom-auteur{

@@ -142,7 +142,7 @@
                     </form>
                 </div>
                 <div id="profil-amis">
-                    <h3 id="amis-titre">Mes amis</h3>
+                    <h3 id="amis-titre"><?php  if($_GET["id_profil"] == $_SESSION["id"]){echo "Mes";}else{echo "Ses";} ?> amis</h3>
                     <?php
                     if($line["id"] == $_SESSION["id"]){
                         //Liste d'envoi d'amis
@@ -225,7 +225,7 @@
                     </div>-->
                 </div>
                 <div id="profil-post">
-                    <h3 id="post-titre">Mes posts</h3>
+                    <h3 id="post-titre"><?php  if($_GET["id_profil"] == $_SESSION["id"]){echo "Mes";}else{echo "Ses";} ?> posts</h3>
                     <?php
                         //Liste des posts
                         $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
