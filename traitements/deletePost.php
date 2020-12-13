@@ -1,6 +1,9 @@
 <?php
     $action = $_GET["page"];
     $postNum = $_GET["id"];
+    if(isset($_GET["idProfil"])){
+        $action = $action."&id_profil=".$_GET["idProfil"];
+    }
 
     $sql_post = "DELETE FROM posts WHERE id=?";
 

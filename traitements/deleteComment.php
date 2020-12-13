@@ -2,6 +2,9 @@
     $action = $_GET["page"];
     $postNum = $_GET["postId"];
     $idComment = $_GET["id"];
+    if(isset($_GET["idProfil"])){
+        $action = $action."&id_profil=".$_GET["idProfil"];
+    }
 
     $sql = "DELETE FROM comments WHERE id=?";
 
