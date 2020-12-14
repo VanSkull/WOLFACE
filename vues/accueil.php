@@ -59,8 +59,27 @@
             </div>
             
             <?php
+                $sql_amis = "SELECT * FROM users WHERE id IN ( SELECT users.id FROM users INNER JOIN friends ON idUser1=users.id AND state='ami' AND idUser2=? UNION SELECT users.id FROM users INNER JOIN friends ON idUser2=users.id AND state='ami' AND idUser1=?)";
+            
+                $q_amis = $pdo->prepare($sql_amis);
+                
+                $q_amis->execute(array($_SESSION["id"], $_SESSION["id"]));
+                
+                //Préparation commande des posts
+                $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=?";                
+            
+                while($line_amis = $q_amis->fetch()){
+                    /*echo "<pre>";
+                    var_dump($line_amis);
+                    echo "</pre>";*/
+                    
+                    $sql_posts = $sql_posts." OR posts.idAuteur=".$line_amis["id"];
+                }
+                
+                $sql_posts = $sql_posts." ORDER BY posts.datePost DESC";
+            
                 //Liste des posts
-                $sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";
+                /*$sql_posts = "SELECT posts.*, users.*, posts.id AS IDPost FROM posts JOIN users ON users.id=posts.idAmi WHERE posts.idAuteur=? OR posts.idAmi=? ORDER BY posts.datePost DESC";*/
                 $q_posts = $pdo->prepare($sql_posts);
                 
                 $q_posts->execute(array($_SESSION["id"], $_SESSION["id"]));
