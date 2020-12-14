@@ -8,6 +8,10 @@
     var_dump($_POST);
     echo "</pre>";
 
+    echo "<pre>";
+    var_dump($_FILES);
+    echo "</pre>";
+
     echo "Post envoyé !";
 
     //Script pour uploader l'image
@@ -35,11 +39,15 @@
         if(in_array(strtolower($extension),$tabExt)){
             
           // On recupere les dimensions du fichier
-          $infosImg = getimagesize($_FILES['image']['tmp_name']);
+          if($_FILES['image']['tmp_name'] != ""){
+            $infosImg = getimagesize($_FILES['image']['tmp_name']);
+          }
 
           // On verifie le type de l'image
-          if($infosImg[2] >= 1 && $infosImg[2] <= 14){
-                
+          if(!empty($infosImg) && count($infosImg) > 0 && $infosImg[2] >= 1 && $infosImg[2] <= 14){
+              
+            // On vérifie la taille du fichier
+            if(isset($_FILES['image']['size']) && $_FILES['image']['size'] <= 2000000 && $_FILES['image']['size'] > 0){
               // Parcours du tableau d'erreurs
               if(isset($_FILES['image']['error']) 
                 && UPLOAD_ERR_OK === $_FILES['image']['error']){
@@ -56,7 +64,12 @@
                 }
               }else{
                 $message = 'Une erreur interne a empêché l\'uplaod de l\'image';
-              }
+              }                    
+            }else{
+                // Sinon erreur sur la taille de l'image        
+                $message = 'Le fichier à uploader est beaucoup trop lourd !';
+            }
+              
           }else{
             // Sinon erreur sur le type de l'image
             $message = 'Le fichier à uploader n\'est pas une image !';
@@ -71,13 +84,16 @@
       }
     }
 
+    echo "<pre>";
+    var_dump($infosImg);
+    echo "</pre>";
     var_dump($message);
     var_dump($nomImage);
 
     if($nomImage != ""){
         $lienImage = "./images/posts/".$nomImage;
     }else{
-        $lienImage = "";
+        $lienImage = "./images/fileNotFound.png";
     }
     
     var_dump($lienImage);

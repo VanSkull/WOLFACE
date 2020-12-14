@@ -388,6 +388,7 @@ body{
 }
 
 #profil-entete{
+    position: relative;
     display: flex;
     margin: 25px;
     padding: 10px;
@@ -752,4 +753,24 @@ button.like-button:hover{
 
 .nb-likes-post{
     font-size: 1.5rem;
+}
+
+#form-modif-profil{
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#label-file{
+    cursor: pointer;
+    color: #46417F;
+    font-weight: bold;
+}
+#label-file:hover{
+    color: #9D9DCE;
+}
+
+#input-file{
+    display: none;
 }

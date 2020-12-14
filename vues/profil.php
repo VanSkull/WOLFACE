@@ -84,6 +84,21 @@
             ?>
             <div id="profil-infos">
                 <div id="profil-entete">
+                    <?php
+                        if($_GET["id_profil"] == $_SESSION["id"]){
+                    ?>
+                    <form action="index.php?action=modifProfil" method="post" id="form-modif-profil" enctype="multipart/form-data">
+                        <label for="input-file" id="label-file">Modifier l'avatar</label>
+                        <input type="file" name="photo-avatar" id="input-file" accept="image/x-png, image/gif, image/jpg" data-max-size="2000000" required />
+                        <div id="preview-file">
+                            <p>Aucune photo sélectionnée</p>
+                        </div>
+                        <input type="submit" value="Envoyer" />
+                    </form>
+                    <?php
+                        }
+                    ?>
+                    
                     <img id="photoDeProfil-entete" src="<?php if($line["avatar"] != "image"){echo $line["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php  echo $line["family_name"]."_".$line["user_name"]; ?>" />
                     <div id="infos">
                         <span id="profil-prenomNom"><?php  echo ucwords($line["family_name"]." ".$line["user_name"]); ?></span><br/>
