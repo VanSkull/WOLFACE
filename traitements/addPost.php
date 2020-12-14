@@ -2,7 +2,7 @@
     date_default_timezone_set('Europe/Paris');
 
     define('TARGET', './images/posts/');
-    define('MAX_size', 1000000);
+    define('MAX_size', 2000000);
 
     echo "<pre>";
     var_dump($_POST);

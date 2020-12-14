@@ -130,7 +130,7 @@
                     <form action="index.php?action=ajoutPost" method="post" enctype="multipart/form-data">
                         <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/>
                         <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea><br/>
-                        <label for="image-file">Une image (facultatif): </label><input type="file" id="image-file" name="image" accept="image/x-png, image/gif, image/jpg" data-max-size="1000000" /><br/>
+                        <label for="image-file">Une image (facultatif): </label><input type="file" id="image-file" name="image" accept="image/x-png, image/gif, image/jpg" data-max-size="2000000" /><br/>
                         <?php
                             if($line["id"] != $_SESSION["id"]){
                                 echo "<input type='hidden' name='idAmi' value='".$line['id']."' />";

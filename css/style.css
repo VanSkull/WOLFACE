@@ -610,11 +610,12 @@ body{
 }
 
 .post-image{
-    width: 200px;
+    width: 356px;
     height: 200px;
     margin: 0 auto;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center;
+    background-size: contain;
 }
 
 .date-post{
