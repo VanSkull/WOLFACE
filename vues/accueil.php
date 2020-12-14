@@ -11,7 +11,25 @@
 <div class="page_accueil">
     <div id="sidebar-menu">
         <div id="profil">
-            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
+            <?php
+                $sql_avatar = "SELECT avatar FROM users WHERE id=?";
+
+                $q_avatar = $pdo->prepare($sql_avatar);
+
+                $q_avatar->execute(array($_SESSION["id"]));
+
+                $line_avatar = $q_avatar->fetch();
+                /*echo "<pre>";
+                var_dump($line_avatar);
+                echo "</pre>";*/
+
+                if(!$line_avatar){
+                    $avatarSession = "images/img_profil.png";   
+                }else{
+                    $avatarSession = $line_avatar["avatar"];   
+                }
+            ?>
+            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="<?php if($avatarSession != "image"){echo $avatarSession;}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
             <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
 
@@ -52,7 +70,7 @@
                 <form action="index.php?action=ajoutPost" method="post" enctype="multipart/form-data">
                     <input type="text" id="title" name="title" placeholder="Écrivez un titre..." required/><br/>
                     <textarea id="content" name="content" placeholder="Écrivez votre poste ici..." required></textarea><br/>
-                    <label for="image-file">Une image (facultatif): </label><input type="file" id="image-file" name="image" accept="image/x-png, image/gif, image/jpg" data-max-size="1000000" /><br/>
+                    <label for="image-file">Une image (facultatif): </label><input type="file" id="image-file" name="image" accept="image/x-png, image/gif, image/jpg" data-max-size="2000000" /><br/>
                     <input type="hidden" name="page" value="accueil" />
                     <input id="send-post" type="submit" value="Envoyer">
                 </form>
@@ -107,13 +125,14 @@
                             
                             if($auteur_nom == ""){
                                 $auteur_nom = $line_auteur["family_name"]." ".$line_auteur["user_name"];
+                                $avatarAuteur = $line_auteur["avatar"];
                             }else{
                                 $ami_nom = $line_auteur["family_name"]." ".$line_auteur["user_name"];
                             }
                         }
                     ?>
                     <div class="photo-profil-auteur">
-                        <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo str_replace(" ", "_", $auteur_nom); ?>" />
+                        <img class="photo-auteur" src="<?php if($avatarAuteur != "image"){echo $avatarAuteur;}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo str_replace(" ", "_", $auteur_nom); ?>" />
                     </div>
                     <div class="text-post">
                         <?php
@@ -197,7 +216,7 @@
                     ?>
                     <div class="commentaire">
                         <div class="photo-commentateur">
-                            <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
+                            <img class="photo-profil-commentateur" src="<?php if($line_comments["avatar"] != "image"){echo $line_comments["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
                         </div>
                         <div class="main-commentaire">
                             <?php

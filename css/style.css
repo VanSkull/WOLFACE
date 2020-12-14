@@ -753,7 +753,27 @@ html{
 
     .nb-likes-post{
         font-size: 1.5rem;
-    }   
+    }  
+  
+  #form-modif-profil{
+      position: absolute;
+      left: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  #label-file{
+      cursor: pointer;
+      color: #46417F;
+      font-weight: bold;
+  }
+  #label-file:hover{
+      color: #9D9DCE;
+  }
+
+  #input-file{
+    display: none;
+  } 
 }
 
 /* Responsive smartphone */
@@ -989,7 +1009,6 @@ html{
         font-size: 10px;
     }
     
-
     .contain_contain-accueil{
         background-color: #EFEEEE;
         margin-left: 5px;
@@ -1485,4 +1504,24 @@ html{
     .nb-likes-post{
         font-size: 1.5rem;
     }  
+  
+  #form-modif-profil{
+      position: absolute;
+      left: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  #label-file{
+      cursor: pointer;
+      color: #46417F;
+      font-weight: bold;
+  }
+  #label-file:hover{
+      color: #9D9DCE;
+  }
+
+  #input-file{
+    display: none;
+  } 
 }

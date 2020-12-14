@@ -7,6 +7,8 @@ $listeDesActions = array(
     "connexion_inscription" => "vues/connexion.php",
     "profil" => "vues/profil.php",
     
+    "modifProfil" => "traitements/modifyProfil.php",
+    
     "ajoutCommentaire" => "traitements/addComment.php",
     "modifCommentaire" => "traitements/modifyComment.php",
     "supprCommentaire" => "traitements/deleteComment.php",
