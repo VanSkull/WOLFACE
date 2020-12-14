@@ -14,10 +14,7 @@ html{
 
 /**********/
 /* Règles */
-/**********/
-/* Responsive tablette et grand écran */
-@media screen and (min-width:768px) and (max-width:1388px){
-    
+/**********/ 
     body{
         background-image: url(../images/background.png);
         background-size: 50%;
@@ -774,7 +771,6 @@ html{
   #input-file{
     display: none;
   } 
-}
 
 /* Responsive smartphone */
 
