@@ -11,7 +11,25 @@
 <div class="page_accueil">
     <div id="sidebar-menu">
         <div id="profil">
-            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
+            <?php
+                $sql_avatar = "SELECT avatar FROM users WHERE id=?";
+
+                $q_avatar = $pdo->prepare($sql_avatar);
+
+                $q_avatar->execute(array($_SESSION["id"]));
+
+                $line_avatar = $q_avatar->fetch();
+                /*echo "<pre>";
+                var_dump($line_avatar);
+                echo "</pre>";*/
+
+                if(!$line_avatar){
+                    $avatarSession = "images/img_profil.png";   
+                }else{
+                    $avatarSession = $line_avatar["avatar"];   
+                }
+            ?>
+            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="<?php if($avatarSession != "image"){echo $avatarSession;}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
             <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
 
@@ -67,7 +85,7 @@
             ?>
 
             <div class="carte-ami" onclick="viewProfil(<?php echo $line2["IDUser"]; ?>);">
-                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
+                <img class="photo-profil-ami" src="<?php if($line2["avatar"] != "image"){echo $line2["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
                 <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span><br/>
                 <?php
                     //Attribution de l'état de l'amitié                

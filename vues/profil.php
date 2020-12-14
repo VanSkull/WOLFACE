@@ -8,11 +8,28 @@
 
 <!-- <body> -->
 <!--PAGE DE PROFIL UTILISATEUR-->
-
 <div class="page_accueil">
     <div id="sidebar-menu">
         <div id="profil">
-            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
+            <?php
+                $sql_avatar = "SELECT avatar FROM users WHERE id=?";
+
+                $q_avatar = $pdo->prepare($sql_avatar);
+
+                $q_avatar->execute(array($_SESSION["id"]));
+
+                $line_avatar = $q_avatar->fetch();
+                /*echo "<pre>";
+                var_dump($line_avatar);
+                echo "</pre>";*/
+
+                if(!$line_avatar){
+                    $avatarSession = "images/img_profil.png";   
+                }else{
+                    $avatarSession = $line_avatar["avatar"];   
+                }
+            ?>
+            <img id="photoDeProfil" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)" src="<?php if($avatarSession != "image"){echo $avatarSession;}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $_SESSION["login"]; ?>" />
             <p id="prenomNom" onclick="viewProfil(<?php echo $_SESSION["id"]; ?>)"><?php echo str_replace("_", " ", $_SESSION["login"]); ?></p>
         </div>
 
@@ -67,7 +84,7 @@
             ?>
             <div id="profil-infos">
                 <div id="profil-entete">
-                    <img id="photoDeProfil-entete" src="images/img_profil.png" alt="Photo_de_profil_de_<?php  echo $line["family_name"]."_".$line["user_name"]; ?>" />
+                    <img id="photoDeProfil-entete" src="<?php if($line["avatar"] != "image"){echo $line["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php  echo $line["family_name"]."_".$line["user_name"]; ?>" />
                     <div id="infos">
                         <span id="profil-prenomNom"><?php  echo ucwords($line["family_name"]." ".$line["user_name"]); ?></span><br/>
                         <span id="profil-naissance"><?php $time = strtotime($line["dateOfBirth"]); $date = date('d-m-Y', $time); echo $date; ?></span><br/>
@@ -158,7 +175,7 @@
                             echo "</pre>";*/
                             ?>
                             <div class="carte-ami">
-                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
+                                <img class="photo-profil-ami" src="<?php if($line2["avatar"] != "image"){echo $line2["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $line2["family_name"]."_".$line2["user_name"]; ?>" />
                                 <span class="nom-ami"><?php echo $line2["family_name"]." ".$line2["user_name"]; ?></span>
                                 <span class="status-ami">Demande envoyée</span>
                             </div>
@@ -181,7 +198,7 @@
                             echo "</pre>";*/
                             ?>
                             <div class="carte-ami">
-                                <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line3["family_name"]."_".$line3["user_name"]; ?>" />
+                                <img class="photo-profil-ami" src="<?php if($line3["avatar"] != "image"){echo $line3["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $line3["family_name"]."_".$line3["user_name"]; ?>" />
                                 <span class="nom-ami"><?php echo $line3["family_name"]." ".$line3["user_name"]; ?></span>
                                 <span class="status-ami">Demande reçue</span>
                                 <a class="bouton-accept" href="index.php?action=accept&id=<?php echo $line3["id"]; ?>">Accepter</a>
@@ -210,7 +227,7 @@
                         echo "</pre>";*/
                         ?>
                         <div class="carte-ami">
-                            <img class="photo-profil-ami" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line4["family_name"]."_".$line4["user_name"]; ?>" />
+                            <img class="photo-profil-ami" src="<?php if($line4["avatar"] != "image"){echo $line4["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $line4["family_name"]."_".$line4["user_name"]; ?>" />
                             <span class="nom-ami"><?php echo $line4["family_name"]." ".$line4["user_name"]; ?></span>
                             <span class="status-ami">Vous êtes amis</span>
                         </div>
@@ -257,13 +274,14 @@
 
                                     if($auteur_nom == ""){
                                         $auteur_nom = $line_auteur["family_name"]." ".$line_auteur["user_name"];
+                                        $avatarAuteur = $line_auteur["avatar"];
                                     }else{
                                         $ami_nom = $line_auteur["family_name"]." ".$line_auteur["user_name"];
                                     }
                                 }
                             ?>
                             <div class="photo-profil-auteur">
-                                <img class="photo-auteur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo str_replace(" ", "_", $auteur_nom); ?>" />
+                                <img class="photo-auteur" src="<?php if($avatarAuteur != "image"){echo $avatarAuteur;}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo str_replace(" ", "_", $auteur_nom); ?>" />
                             </div>
                             <div class="text-post">
                                 <?php
@@ -348,7 +366,7 @@
                             ?>
                             <div class="commentaire">
                                 <div class="photo-commentateur">
-                                    <img class="photo-profil-commentateur" src="images/img_profil.png" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
+                                    <img class="photo-profil-commentateur" src="<?php if($line_comments["avatar"] != "image"){echo $line_comments["avatar"];}else{echo "images/img_profil.png";} ?>" alt="Photo_de_profil_de_<?php echo $line_comments["family_name"]."_".$line_comments["user_name"]; ?>" />
                                 </div>
                                 <div class="main-commentaire">
                                     <?php
