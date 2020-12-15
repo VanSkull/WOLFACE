@@ -756,6 +756,7 @@ button.like-button:hover{
 }
 
 #form-modif-profil{
+    max-width: 200px;
     position: absolute;
     left: 100px;
     top: 50%;

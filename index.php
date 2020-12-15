@@ -84,8 +84,85 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
                     }else{
                        allUsers[i].style.display = "none";                       
                     }
+                }                
+            }
+            
+            //Preview de la photo sur la page "Profil"
+            let input = document.querySelector('#input-file');
+            let preview = document.querySelector('#preview-file');
+            input.style.opacity = 0;
+            input.addEventListener('change', updateImageDisplay);
+            
+            function updateImageDisplay() {
+                while(preview.firstChild) {
+                    preview.removeChild(preview.firstChild);
                 }
+
+                let curFiles = input.files;
+                console.log(curFiles);
+                if(curFiles.length === 0) {
+                    let para = document.createElement('p');
+                    para.textContent = 'Aucune photo sélectionnée';
+                    preview.appendChild(para);
+                }else{
+                    let list = document.createElement('ol');
+                    list.style.listStyleType = "none";
+                    preview.appendChild(list);
+                    for(let i = 0; i < curFiles.length; i++) {
+                        let listItem = document.createElement('li');
+                        let para = document.createElement('p');
+                        para.style.wordBreak = 'normal';
+
+                        if(validFileType(curFiles[i])) {
+                            para.textContent = 'Nom : ' + curFiles[i].name + ', taille : ' + returnFileSize(curFiles[i].size) + '.';
+                            let image = document.createElement('img');
+                            image.style.width = '50px';
+                            image.style.height = '50px';
+                            image.style.borderRadius = '5px';
+                            image.src = window.URL.createObjectURL(curFiles[i]);
+
+                            listItem.appendChild(image);
+                            listItem.appendChild(para);
+
+                        }else{
+                            para.textContent = 'Nom : ' + curFiles[i].name + ': Type de fichier non accepté ou trop lourd (> 2Mo). Changez votre photo.';
+                            listItem.appendChild(para);
+                        }
+                        list.appendChild(listItem);
+                    }
+                }
+            }
+            
+            let fileTypes = [
+              'image/jpeg',
+              'image/jpg',
+              'image/gif',
+              'image/png'
+            ]
+
+            function validFileType(file) {
+              //Vérification du format
+              if(file.size > 2000000){
+                return false;   
+              }
                 
+              //Vérification du format
+              for(let i = 0; i < fileTypes.length; i++) {
+                if(file.type === fileTypes[i]) {
+                  return true;
+                }
+              }
+              return false;
+            }
+            
+            function returnFileSize(number) {
+              if(number < 1024) {
+                return number + ' octets';
+              } else if(number >= 1024 && number < 1048576) {
+                return (number/1024).toFixed(1) + ' Ko';
+              } else if(number >= 1048576) {
+                return (number/1048576).toFixed(1) + ' Mo';
+              }
             }
         </script>
     </body>

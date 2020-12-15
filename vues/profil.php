@@ -91,7 +91,7 @@
                         <label for="input-file" id="label-file">Modifier l'avatar</label>
                         <input type="file" name="photo-avatar" id="input-file" accept="image/x-png, image/gif, image/jpg" data-max-size="2000000" required />
                         <div id="preview-file">
-                            <p>Aucune photo sélectionnée</p>
+                            <p id="para-preview">Aucune photo sélectionnée</p>
                         </div>
                         <input type="submit" value="Envoyer" />
                     </form>
