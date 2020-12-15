@@ -10,10 +10,10 @@ $listeDesActions = array(
     "modifProfil" => "traitements/modifyProfil.php",
     
     "ajoutCommentaire" => "traitements/addComment.php",
-    "modifCommentaire" => "traitements/modifyComment.php",
+    //"modifCommentaire" => "traitements/modifyComment.php",
     "supprCommentaire" => "traitements/deleteComment.php",
     "ajoutPost" => "traitements/addPost.php",
-    "modifPost" => "traitements/modifyPost.php",
+    //"modifPost" => "traitements/modifyPost.php",
     "supprPost" => "traitements/deletePost.php",
     "ajoutLike" => "traitements/addLike.php",
     "supprLike" => "traitements/deleteLike.php",
