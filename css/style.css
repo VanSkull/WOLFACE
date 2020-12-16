@@ -891,7 +891,7 @@ button.like-button:hover{
     }
     
     #title{
-        width: 300px;
+/*        width: 300px;*/
         margin-left: 20px;
     }
     
@@ -980,5 +980,17 @@ button.like-button:hover{
     
     #post-titre{
         margin-left: -600px;
+    }
+    
+    #send-post{
+        margin-left: 20px;
+    }
+    
+    #send-commentaire{
+        margin-left: 20px;
+    }
+    
+    #send_ecrit-commentaire{
+        margin-left: 20px;
     }
 }
